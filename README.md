@@ -1,3 +1,38 @@
+# Quiz = final project for front end development.
+* The quiz will be build using react and redux (Thouhg not neccesarily required)
+* It will be a "Responsive" application to work on a veriaty of devices
+* Accessibility will be taken into account, ie. screenreader works and keyboard navigation is supported as well as contrasting colours
+* The quiz will have 3 types of questions: multiple choise, true/false, fill in the blanks
+
+# Throughout the project:
+* Use git and github to manage development and bugs/tasks
+* Document issues and how they are fixed including the process
+* Write automated tests for features and methods throughout the development
+
+# steps in project
+* wireframe/scetch the layout of the application
+* create repo on github
+* create react app and link to repo
+* develop the basic application with homepage, question page, the 3 question types and a feedback page
+* introduce the redux store to manage the application state
+* make it look nice and make it accessible and responsive
+* non functional, make it fast, use lighthouse to confirm 90% score
+* all errors are handled correctly and a user can always navigate out of error states
+* release the project on github pages
+* validate the project on a veriety of devices
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

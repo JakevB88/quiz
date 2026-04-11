@@ -19,16 +19,21 @@
 * non functional, make it fast, use lighthouse to confirm 90% score
 * all errors are handled correctly and a user can always navigate out of error states
 * release the project on github pages
-* validate the project on a veriety of devices
+* validate the project on a veriety of devices 
 
 
+# Wireframe initial idea
+home page  
+![Tis immage shows the initial draft wireframe for the home page.](https://github.com/JakevB88/quiz/public/media/wireframe_v1/home_page/png)  
 
+question page example  
+![Tis immage shows the initial draft wireframe for the question page example.](https://github.com/JakevB88/quiz/public/media/wireframe_v1/question_page.png)  
 
+question page answered  
+![Tis immage shows the initial draft wireframe for the question page after it is answered.](https://github.com/JakevB88/quiz/public/media/wireframe_v1/question_page_answered.png)  
 
-
-
-
-
+result page  
+![Tis immage shows the initial draft wireframe for the results page when the quiz is finished.](https://github.com/JakevB88/quiz/public/media/wireframe_v1/result_page.png)
 
 
 

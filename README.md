@@ -1,41 +1,72 @@
-# Quiz = final project for front end development.
-* The quiz will be build using react and redux (Thouhg not neccesarily required)
-* It will be a "Responsive" application to work on a veriaty of devices
-* Accessibility will be taken into account, ie. screenreader works and keyboard navigation is supported as well as contrasting colours
-* The quiz will have 3 types of questions: multiple choise, true/false, fill in the blanks
+# Quiz — Final Project for Front‑End Development
 
-# Throughout the project:
-* Use git and github to manage development and bugs/tasks
-* Document issues and how they are fixed including the process
-* Write automated tests for features and methods throughout the development
+This project is the final assessment for front‑end development. It is a responsive, accessible quiz application built with modern web technologies.
 
-# steps in project
-* wireframe/scetch the layout of the application
-* create repo on github
-* create react app and link to repo
-* develop the basic application with homepage, question page, the 3 question types and a feedback page
-* introduce the redux store to manage the application state
-* make it look nice and make it accessible and responsive
-* non functional, make it fast, use lighthouse to confirm 90% score
-* all errors are handled correctly and a user can always navigate out of error states
-* release the project on github pages
-* validate the project on a veriety of devices 
+---
 
+## Project overview
+- The quiz will be built using **React** and **Redux** (Though Redux is not necessarily required)
+- The application will be **Responsive**, supporting a wide range of devices
+- **Accessibility**:
+    - screen reader 
+    - keyboard navigation
+    - contrasting colours
+- The quiz will support 3 types of questions: 
+    - multiple choice
+    - true/false
+    - fill in the blanks
 
-# Wireframe initial idea
-home page  
-![Tis immage shows the initial draft wireframe for the home page.](https://github.com/JakevB88/quiz/public/media/wireframe_v1/home_page/png)  
+---
 
-question page example  
-![Tis immage shows the initial draft wireframe for the question page example.](https://github.com/JakevB88/quiz/public/media/wireframe_v1/question_page.png)  
+## Development
 
-question page answered  
-![Tis immage shows the initial draft wireframe for the question page after it is answered.](https://github.com/JakevB88/quiz/public/media/wireframe_v1/question_page_answered.png)  
+Throughout the project:
+- **Git and GitHub** will be used to manage development and track bugs and tasks
+- **Issues/bugs** will be documented, including:
+  - What the problem was
+  - How it was fixed
+  - The reasoning and process behind the fix
+- **Automated tests** will be written for features and core logic throughout development
 
-result page  
-![Tis immage shows the initial draft wireframe for the results page when the quiz is finished.](https://github.com/JakevB88/quiz/public/media/wireframe_v1/result_page.png)
+---
 
+## Project steps
+1. Wireframe/scetch the application layout
+2. Create the GitHub repository
+3. Create React application and link it to the GitHub repository
+4. Develop the core application 
+    - homepage
+    - question page with the 3 question types 
+    - result page
+    - how to page
+5. Introduce **Redux** for the application state management
+6. Improve visuals, accessible and responsiveness
+7. Non functional requirements
+    - performance optimization 
+    - Achieve a 90% lighthouse score
+8. Ensure 
+    - all errors are handled gracefully 
+    - users can always recover from an error states
+9. Deploy the project on github pages
+10. Validate the project on a variety of devices 
 
+---
+
+## Wireframes
+### Initial wireframes for:
+- home page
+- question page example
+- question page answered
+- result page  
+
+<img src="public/media/wireframe_v1/home_page.png" alt="Home page wireframe" width="300"/>
+<img src="public/media/wireframe_v1/question_page.png" alt="Question page wireframe" width="300"/>
+<img src="public/media/wireframe_v1/question_page_answered.png" alt="Answered question wireframe" width="300"/>
+<img src="public/media/wireframe_v1/result_page.png" alt="Initial draft wireframe for the results page" width="300"/>
+
+---
+
+## Core application
 
 
 # Getting Started with Create React App

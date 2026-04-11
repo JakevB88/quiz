@@ -2,21 +2,21 @@ import volcanoImage from "../images/volcanoImage-alain-bonnardeaux-tLxGw_ITs7k-u
 import solarSystemImage from "../images/solarSystemImagenasa-hubble-space-telescope-rZhFmSl1Jow-unsplash.jpg"
 import weatherImage from "../images/weatherImage-noaa-ZVhm6rEKEX8-unsplash.jpg"
 import bodyImage from "../images/bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.jpg"
-import questionIcon from "../images/question-inquiry-icon.png"
+import QuestionsPage from "./QuestionsPage"
 
-export default function Homepage() {
+
+
+
+export default function HomePage() {
     return(
         <div>
-            <div className="header">
-                <h1>Science Quiz</h1>
-                <img className="questionIcon" src={questionIcon}/>
-            </div>
+            
 
             <h1>Quiz Topics</h1>
             <div className="quizzes">
                 <div className="quiz-item"> 
                     <p>Vulcanoes</p>
-                    <img src={volcanoImage} alt="Immage showing an errupting volcano agains a horrizon"/>
+                    <img src={volcanoImage} alt="Immage showing an errupting volcano agains a horrizon" onClick={QuestionsPage}/>
                 </div>
                 <div className="quiz-item">
                     <p>Weather</p>

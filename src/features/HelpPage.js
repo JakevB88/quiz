@@ -1,5 +1,7 @@
 
 
 export default function HelpPage() {
-    <h1>HelpPage</h1>
+    return(
+        <h1>HelpPage</h1>
+    )
 }

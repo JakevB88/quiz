@@ -29,6 +29,6 @@ code {
   text-align: left;
 }
 
-.questionIcon {
+.questionIcon, .homeIcon {
   max-width: 40px;
 }

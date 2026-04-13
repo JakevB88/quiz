@@ -71,8 +71,28 @@ Throughout the project:
 
 
 ## Refferences
+- volcanoImage-alain-bonnardeaux-tLxGw_ITs7k-unsplash.jpg:              https://unsplash.com/photos/white-clouds-over-snow-covered-mountain-tLxGw_ITs7k 
+- bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.jpg:                    https://unsplash.com/photos/a-3d-image-of-the-human-body-and-the-structure-of-the-body-ZMK0DU5wARA
+- solarSystemImagenasa-hubble-space-telescope-rZhFmSl1Jow-unsplash.jpg: https://unsplash.com/photos/an-artists-rendering-of-the-solar-system-rZhFmSl1Jow 
+- weatherImage-noaa-ZVhm6rEKEX8-unsplash.jpg:                           https://unsplash.com/photos/orange-and-gray-clouds-during-sunset-ZVhm6rEKEX8 
+- question-inquiry-icon.png:                                            https://uxwing.com/question-inquiry-icon/
+- homepage-icon.png                                                     https://uxwing.com/homepage-icon/
 
-- question mark Icon: https://uxwing.com/question-inquiry-icon/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Getting Started with Create React App

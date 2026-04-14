@@ -32,3 +32,39 @@ code {
 .questionIcon, .homeIcon {
   max-width: 40px;
 }
+
+.listIcon {
+  color: blue;
+}
+
+.multipleChoiseItem {
+  display: inline;
+}
+
+
+.questionFooter {
+  display: flex;
+  gap: 50px;
+}
+
+
+
+
+.blank {
+  display: inline-flex;
+  min-width: 90px;
+  min-height: 22px;
+  border-bottom: 2px solid #333;
+  margin: 0 6px;
+  align-items: center;
+  justify-content: center;
+}
+
+.options li {
+  padding: 6px 10px;
+  background: #e0e0e0;
+  cursor: grab;
+  border-radius: 4px;
+}
+
+

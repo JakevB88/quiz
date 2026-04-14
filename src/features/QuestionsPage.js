@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ResultsPage from "./ResultsPage";
+
+
 
 export default function QuestionsPage() {
     
-
+    const navigate = useNavigate();
 
     const previousQuestion = () => {
         console.log(`previous question clicked`)
@@ -105,9 +109,10 @@ export default function QuestionsPage() {
             </div>
 
             <br></br>
-            <div className="questionFooter">
+            <div className="pageFooter">
                 <a className="questionFooterPrevious" onClick={previousQuestion}>previous</a>
                 <a className="questionFooterNext" onClick={nextQuestion}>next</a>
+                <a onClick={() => {navigate("/resultspage")}}>submit</a>
             </div>
         </div>
     )

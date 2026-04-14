@@ -42,7 +42,7 @@ code {
 }
 
 
-.questionFooter {
+.pageFooter {
   display: flex;
   gap: 50px;
 }

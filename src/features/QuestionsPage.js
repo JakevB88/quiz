@@ -1,6 +1,9 @@
-
+import { useState } from "react";
 
 export default function QuestionsPage() {
+    
+
+
     const previousQuestion = () => {
         console.log(`previous question clicked`)
     }
@@ -9,20 +12,36 @@ export default function QuestionsPage() {
         console.log(`next question clicked`)
     }
 
-        
-    const allowDrop = (e) => {
-        e.preventDefault();
-    }
+    const allOptions = ["Roman", "Egyptian", "lava", "fire"];
+
+    const [blanks, setBlanks] = useState({
+        blank1: null,
+        blank2: null
+    });    
 
     const drag = (e) => {
         e.dataTransfer.setData("text/plain", e.target.id);
-    }
+    };
 
-    const drop = (e) => {
-        e.preventDefault();
-        const id = e.dataTransfer.getData("text/plain");
-        e.target.appendChild(document.getElementById(id));
-    }
+    const allowDrop = (e) => e.preventDefault();
+
+    const dropIntoBlank = (blankKey) => (e) => {
+            e.preventDefault();
+        const word = e.dataTransfer.getData("text/plain");
+
+        setBlanks((prev) => ({
+            ...prev,
+            [blankKey]: word
+        }));
+    };
+
+    const clearBlank = (blankKey) => {
+        setBlanks((prev) => ({
+            ...prev,
+            [blankKey]: null
+        }));
+    };
+
 
 
     return (
@@ -48,18 +67,40 @@ export default function QuestionsPage() {
 
             <div class="question">
                 <p>
-                    The name volcano comes from the
-                    <span className="blank" onDrop={drop} onDragOver={allowDrop}></span>
-                    god of
-                    <span className="blank" onDrop={drop} onDragOver={allowDrop}></span>
+                    The name volcano comes from the{" "}
+                    <span
+                        className="blank"
+                        onDrop={dropIntoBlank("blank1")}
+                        onDragOver={allowDrop}
+                        onClick={() => clearBlank("blank1")}
+                    >
+                        {blanks.blank1 ?? "_____"}
+                    </span>{" "}
+                    god of{" "}
+                    <span
+                        className="blank"
+                        onDrop={dropIntoBlank("blank2")}
+                        onDragOver={allowDrop}
+                        onClick={() => clearBlank("blank2")}
+                    >
+                        {blanks.blank2 ?? "_____"}
+                    </span>{" "}
                     Vulcan!
-                </p>
-
+                </p>    
                 <ul className="options">
-                    <li draggable="true" onDragStart={drag} id="roman">Roman</li>
-                    <li draggable="true" onDragStart={drag} id="egyptian">Egyptian</li>
-                    <li draggable="true" onDragStart={drag} id="lava">lava</li>
-                    <li draggable="true" onDragStart={drag} id="fire">fire</li>
+                    {allOptions.filter((word) =>
+                        word !== blanks.blank1 && word !== blanks.blank2
+                    )
+                    .map((word) => (
+                    <li
+                        key={word}
+                        id={word}
+                        draggable
+                        onDragStart={drag}
+                    >
+                        {word}
+                    </li>
+                    ))}
                 </ul>
             </div>
 

@@ -9,11 +9,6 @@ import { useNavigate } from "react-router-dom";
 export default function HomePage() {
     const navigate = useNavigate();
 
-    const handleClick = () => {
-        navigate("/questionspage");
-    }
-
-
     return(
         <div>
             
@@ -21,10 +16,10 @@ export default function HomePage() {
             <h1>Quiz Topics</h1>
             <div className="quizzes">
                 <div className="quiz-item"> 
-                    <p>Vulcanoes</p>
+                    <p>Volcanoes</p>
                     <img 
                         src={volcanoImage} 
-                        alt="Immage showing an errupting volcano agains a horrizon" 
+                        alt="Immage showing an errupting volcano against a horrizon" 
                         onClick={() => {navigate("/questionspage")}}
                     />
                 </div>

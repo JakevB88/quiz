@@ -3,50 +3,43 @@ import solarSystemImage from "../images/solarSystemImagenasa-hubble-space-telesc
 import weatherImage from "../images/weatherImage-noaa-ZVhm6rEKEX8-unsplash.jpg";
 import bodyImage from "../images/bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.jpg";
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { startQuiz, nextQuestion, resetQuiz, selectQuiz } from "../store/quizSlice"
+import QuestionsPage from "./QuestionsPage";
 
 
 export default function HomePage() {
+    const quizzes = useSelector(selectQuiz);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    
+    const quizImageMap = {
+        volcano: volcanoImage,
+        weather: weatherImage,
+        solarSystem: solarSystemImage,
+        body: bodyImage
+    };
+
+    const handleQuizSelection = (id) => {
+        dispatch(startQuiz(id))
+        navigate("questionspage");
+    };
+
 
     return(
         <div>
-            
-
             <h1>Quiz Topics</h1>
             <div className="quizzes">
-                <div className="quiz-item"> 
-                    <p>Volcanoes</p>
-                    <img 
-                        src={volcanoImage} 
-                        alt="Immage showing an errupting volcano against a horrizon" 
-                        onClick={() => {navigate("/questionspage")}}
-                    />
-                </div>
-                <div className="quiz-item">
-                    <p>Weather</p>
-                    <img 
-                        src={weatherImage} 
-                        alt="Immage showing a stromcloud hit by the light from a sunset with heavy rain coming from the cloud"
-                        onClick={() => {navigate("/questionspage")}}
-                    />
-                </div>
-                <div className="quiz-item">
-                    <p>Solar System</p>
-                    <img 
-                        src={solarSystemImage} 
-                        alt="Immage showing an overview of our solarsystem"
-                        onClick={() => {navigate("/questionspage")}}
-                    />
-                </div>
-                <div className="quiz-item">
-                    <p>Body</p>
-                    <img 
-                        src={bodyImage} 
-                        alt="Image picturing the anatomy of a humen, in this case the torso and its sceleton"
-                        onClick={() => {navigate("/questionspage")}}
-                    />
-                </div>
+                {Object.values(quizzes).map((quiz) => (
+                    <div key={quiz.id} className="quiz-item">
+                        <p>{quiz.title}</p>
+                        <img className="quizImage"
+                            src={quizImageMap[quiz.img.key]} 
+                            alt={quiz.img.alt} 
+                            onClick={() => handleQuizSelection(quiz.id)}  
+                        />
+                    </div>
+                ))}
             </div>
         </div>
     )

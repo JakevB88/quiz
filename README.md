@@ -67,9 +67,32 @@ Throughout the project:
 ---
 
 ## Core application
+### Challange 1#
+I want to have the option to implement multiple quizzes with different topics.
+I want the quizzes to be defined in the quizSlice.js using REDUX store.
+currently the hompage has the quiz topics and images hard coded like below.
 
+I do not want the hompage to be hardcoded, I want the hompage to cycle throught the quizzes and display them accordingly.
+this keeps the code in hompage nice and short and it will need minimal updates when new quizzes are introduced.
 
+I need to work out how to cylcle through the quizzes in the store and display the quiz title and immage where the immage is also the clickable link to do the quiz.
+And this without duplicate code for each quiz.
 
+using "Object.values().map(() => ())" will allow me to cycle through an object that has multiple objects inside.
+This can then be used in turn to dinamicly display the quiz title and immage stored in the individual quiz object.
+
+                {Object.values(quizzes).map((quiz) => (
+                    <div key={quiz.id} className="quiz-item">
+                        <p>{quiz.title}</p>
+                        <img className="quizImage"
+                            src={quizImageMap[quiz.img.key]} 
+                            alt={quiz.img.alt} 
+                            onClick={() => {navigate("/questionspage")}}
+                        />
+                    </div>
+                ))}
+
+                
 ## Refferences
 - volcanoImage-alain-bonnardeaux-tLxGw_ITs7k-unsplash.jpg:              https://unsplash.com/photos/white-clouds-over-snow-covered-mountain-tLxGw_ITs7k 
 - bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.jpg:                    https://unsplash.com/photos/a-3d-image-of-the-human-body-and-the-structure-of-the-body-ZMK0DU5wARA

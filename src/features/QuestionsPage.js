@@ -5,8 +5,9 @@ import {
     selectQuiz, 
     selectActiveQuizId, 
     selectCurrentQuestionIndex,
+    selectQuestionOrder,
     nextQuestion,
-    previousQuestion  
+    previousQuestion 
 } from "../store/quizSlice";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -25,6 +26,9 @@ export default function QuestionsPage() {
     const currentQuestionIndex = useSelector(selectCurrentQuestionIndex);
     const activeQuiz = quizzes[activeQuizId];
     const asnwerForQuiz = useSelector(selectAnswersForQuiz);
+    const questionOrder = useSelector(selectQuestionOrder);
+    const currentQuestionId = questionOrder[currentQuestionIndex];
+    const currentQuestion = activeQuiz.questions[currentQuestionId];
 
     //create the state for the blanks in the drag/drop questions
     const [blanks, setBlanks] = useState({
@@ -48,10 +52,8 @@ export default function QuestionsPage() {
         );
     }
 
-    const currentQuestion =  activeQuiz.questions[currentQuestionIndex];
-
     const handlePrevious = () => {
-        if (currentQuestionIndex < activeQuiz.questions.length - 1) {
+        if (currentQuestionIndex < questionOrder.length - 1) {
             dispatch(previousQuestion());
         } else {
         }
@@ -71,7 +73,7 @@ export default function QuestionsPage() {
             handleAnswerSelection(finalAnswers);
         }
 
-        if (currentQuestionIndex < activeQuiz.questions.length - 1) {
+        if (currentQuestionIndex < questionOrder.length - 1) {
             dispatch(nextQuestion());
             setBlanks({}); //reset the blanks state for the next question
         } 
@@ -115,7 +117,7 @@ export default function QuestionsPage() {
         <div>
             <div>
                 <h1>{activeQuiz.title} Quiz</h1>
-                <h2>Question {currentQuestionIndex+1} of {activeQuiz.questions.length}</h2>
+                <h2>Question {currentQuestionIndex+1} of {questionOrder.length}</h2>
                 <div className="question">
                     
                     {/*if the question is 'multipleChoise'*/}
@@ -137,8 +139,11 @@ export default function QuestionsPage() {
                             <div>
                                 <p>{currentQuestion.question}</p>
                                 <ul>
-                                    <li onClick={() => handleAnswerSelection("true")}>True</li>
-                                    <li onClick={() => handleAnswerSelection("flase")}>False</li>
+                                    {Object.entries(currentQuestion.options).map(([key, value]) => (
+                                    <li key={key} onClick={() => handleAnswerSelection(key)}>
+                                        {value}
+                                    </li>
+                                    ))}
                                 </ul>
                             </div>
                         )}
@@ -190,8 +195,12 @@ export default function QuestionsPage() {
                 ) : (
                     <span>1st question</span> 
                 )}
+
+
+
+
                 <a onClick={handleNext}> 
-                    {currentQuestionIndex < activeQuiz.questions.length - 1 ? "next" : "submit"}
+                    {currentQuestionIndex < questionOrder.length - 1 ? "next" : "submit"}
                 </a>
             </div> 
         </div>

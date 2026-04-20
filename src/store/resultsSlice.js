@@ -39,17 +39,11 @@ export const selectScoreForQuiz = (state, quizId) => {
     if (!quizData) return 0;
 
     let score = 0;
-    quizData.questions.forEach(question => {
+    Object.values(quizData.questions).forEach(question => {
         const userAnswer = userAnswers[question.id];
         const correctAnswer = question.correctAnswer;
 
-        // Handle different answer types (strings, booleans, or arrays for fill-in-the-blanks)
-        if (Array.isArray(correctAnswer)) {
-            // For fillBlank, check if arrays match (order matters)
-            if (JSON.stringify(userAnswer) === JSON.stringify(correctAnswer)) {
-                score++;
-            }
-        } else if (userAnswer === correctAnswer) {
+        if (userAnswer === correctAnswer) {
             score++;
         }
     });

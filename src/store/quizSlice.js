@@ -1,5 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+};
  
 
 export const quizSlice = createSlice({
@@ -13,8 +21,8 @@ export const quizSlice = createSlice({
                     key: 'volcano',
                     alt: "Immage showing an errupting volcano against a horrizon"
                 },
-                questions: [
-                    {
+                questions: {
+                    q1: {
                         id: 'q1',
                         type: 'multipleChoice',
                         question: 'Where does the name volcano come from?',
@@ -26,13 +34,17 @@ export const quizSlice = createSlice({
                         },
                         correctAnswer: 'a'
                     },
-                    {
+                    q2: {
                         id: 'q2',
                         type: 'trueFalse',
                         question: 'The name volcano comes from the Roman god of fire Vulcan!',
-                        correctAnswer: true
+                        options: {
+                            a: "true",
+                            b: "false",
+                        },
+                        correctAnswer: 'a'
                     },
-                    {
+                    q3: {
                         id: 'q3',
                         type: 'fillBlank',
                         blankCount: 2,
@@ -49,7 +61,7 @@ export const quizSlice = createSlice({
                         },
                         correctAnswer: ['a', 'd']
                     },
-                    {
+                    q4: {
                         id: 'q4',
                         type: 'multipleChoice',
                         question: 'Where does the name volcano come from?',
@@ -61,7 +73,7 @@ export const quizSlice = createSlice({
                         },
                         correctAnswer: 'a'
                     },
-                ]
+                }
             },
             weather: {
                 id: 'weather',
@@ -99,14 +111,19 @@ export const quizSlice = createSlice({
     reducers: { 
         startQuiz(state, action) {
             const quizId = action.payload;
-            const questions = state.quizzes[quizId].questions;
-
+            const quiz = state.quizzes[quizId];
+            
+            if (quiz) {
             state.activeQuizId = quizId;
             state.currentQuestionIndex = 0;
 
-            //state.questionOrder = shuffleArray(
-            //questions.map(q => q.id)
-            //);
+            const questionIds = Object.keys(quiz.questions);
+            state.questionOrder = shuffleArray(questionIds);
+            console.log(`startQuiz ${quizId} questionOrder ${state.questionOrder}`)
+            }
+            else {
+                console.error(`Quiz ${quizId} not found!`)
+            }
         },
 
         nextQuestion(state) {

@@ -6,13 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { startQuiz, nextQuestion, resetQuiz, selectQuiz } from "../store/quizSlice"
 import QuestionsPage from "./QuestionsPage";
-
+import {resetQuizResults} from "../store/resultsSlice"
 
 export default function HomePage() {
-    const quizzes = useSelector(selectQuiz);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     
+    const quizzes = useSelector(selectQuiz);
+    
+
     const quizImageMap = {
         volcano: volcanoImage,
         weather: weatherImage,
@@ -21,7 +23,8 @@ export default function HomePage() {
     };
 
     const handleQuizSelection = (id) => {
-        dispatch(startQuiz(id))
+        dispatch(startQuiz(id));
+        dispatch(resetQuizResults(id));
         navigate("questionspage");
     };
 

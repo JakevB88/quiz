@@ -29,7 +29,7 @@ code {
   text-align: left;
 }
 
-.questionIcon, .homeIcon {
+.questionIcon, .homeIcon, .resultsIcon {
   max-width: 40px;
 }
 

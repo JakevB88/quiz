@@ -91,6 +91,39 @@ This can then be used in turn to dinamicly display the quiz title and immage sto
                         />
                     </div>
                 ))}
+### Challange 2#
+in the quizSlice the question object for "trueFalse" questions uses boolean values to confirm correct answer or not.
+v5: { 
+    id: 'v5', 
+    type: 'trueFalse', 
+    question: 'Some volcanoes form under the sea.', 
+    correctAnswer: True },
+                    
+This made validating the anwer different then validating the answer on the other type of questions in the resultslice.
+
+I did not like this approac so I changed the object for "trueFalse" questions to be the same as the other question types, with clear options for both "true" and "false" in an object.
+this way the same code that checks the other 2 question types can now be used for the "trueFalse" questions.
+
+v5: { 
+    id: 'v5', 
+    type: 'trueFalse', 
+    question: 'Some volcanoes form under the sea.', 
+    options: { a: 'true', b: 'false' }, 
+    correctAnswer: 'a' },
+                    
+
+
+### Challange 3#
+I could not get the questionspage to display the "multipleChoise" questions dinamicly after altering the object for "trueFalse" questions and giving it a legitamate answer (refer to Challange 2#).
+
+I used the below logic for determining what the question type was and displaying it accordingly:
+
+currentQuestion.type === 'multipleChoice' || currentQuestion.type === 'trueFalse' &&()
+
+Looking into this in more detail, I can see that for the left side of the ||  "currentQuestion.type === 'multipleChoice'" the statement is never checked for the && so it always fails.
+
+Adding parentheses solves the issue, with the below, both sides of the || are now checked for && JSX
+(currentQuestion.type === 'multipleChoice' || currentQuestion.type === 'trueFalse') &&()
 
                 
 ## Refferences
@@ -100,7 +133,7 @@ This can then be used in turn to dinamicly display the quiz title and immage sto
 - weatherImage-noaa-ZVhm6rEKEX8-unsplash.jpg:                           https://unsplash.com/photos/orange-and-gray-clouds-during-sunset-ZVhm6rEKEX8 
 - question-inquiry-icon.png:                                            https://uxwing.com/question-inquiry-icon/
 - homepage-icon.png                                                     https://uxwing.com/homepage-icon/
-
+- diagnostic-icon.png                                                   https://uxwing.com/diagnostic-icon/
 
 
 

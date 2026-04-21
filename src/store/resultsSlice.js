@@ -29,27 +29,40 @@ export const resultsSlice = createSlice({
     }
 });
 
-export const selectAnswersForQuiz = (state, quizId) => state.results.answersByQuiz[quizId] || {};
-
-// Calculate the score for a specific quiz
-export const selectScoreForQuiz = (state, quizId) => {
-    const userAnswers = state.results.answersByQuiz[quizId] || {};
-    const quizData = state.quizzes.quizzes[quizId];
-    
-    if (!quizData) return 0;
-
+const calculateScore = (quizData, userAnswers) => {
+    if (!quizData || !userAnswers) return 0;
     let score = 0;
+    
     Object.values(quizData.questions).forEach(question => {
         const userAnswer = userAnswers[question.id];
         const correctAnswer = question.correctAnswer;
 
-        if (userAnswer === correctAnswer) {
+        if (userAnswer === undefined || userAnswer === null) return;
+
+        // Use String() to handle Boolean vs String mismatches
+        if (String(userAnswer) === String(correctAnswer)) {
             score++;
         }
     });
-
     return score;
 };
+
+export const selectAnswersForQuiz = (state, quizId) => state.results.answersByQuiz[quizId] || {};
+
+
+// Calculate the score for a all quizzes
+export const selectAllScores = (state) => {
+    const allScores = {};
+    const quizzes = state.quizzes.quizzes;
+    const answersByQuiz = state.results.answersByQuiz;
+
+    Object.keys(quizzes).forEach(quizId => {
+        allScores[quizId] = calculateScore(quizzes[quizId], answersByQuiz[quizId]);
+    });
+
+    return allScores;
+};
+
 
 export const { recordAnswer, resetQuizResults } = resultsSlice.actions;
 export default resultsSlice.reducer;

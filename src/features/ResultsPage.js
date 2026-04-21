@@ -11,7 +11,7 @@ import {
     resetQuiz
 } from "../store/quizSlice";
 import {
-    selectScoreForQuiz
+    selectAllScores
 } from "../store/resultsSlice";
 
 
@@ -20,11 +20,9 @@ export default function ResultsPage() {
     const dispatch = useDispatch();
 
     const activeQuizId = useSelector(selectActiveQuizId);
-    const quizScore = useSelector((state) => selectScoreForQuiz(state, activeQuizId));
+    const quizScores = useSelector(selectAllScores);
     const quizzes = useSelector(selectQuiz); 
     const activeQuiz = quizzes[activeQuizId];
-
-
 
     const retakeQuiz = () => {
         dispatch(resetQuiz())
@@ -35,13 +33,33 @@ export default function ResultsPage() {
     return(
         <div>
             <h1>ResultsPage</h1>
-            <p>Congratulations you have completed the quiz on {activeQuiz.title}</p>
-            <p>you have achieved a score of {quizScore} out of {Object.keys(activeQuiz.questions).length}</p>
-        
+            <p>Congratulations you have completed the quiz on {activeQuizId}</p>
+            
+            <p>You achieved a score of {quizScores[activeQuizId]} out of {Object.keys(activeQuiz.questions).length}</p>
+            
+            <br></br>
+            <p>Previously completed quizzes:</p>
+            {Object.values(quizzes)
+                .filter(quiz => quiz.id !== activeQuizId)
+                .map(quiz => {
+                    // Calculate total questions for this specific quiz in the loop
+                    const totalQuestions = Object.keys(quiz.questions).length;
+                    const score = quizScores[quiz.id];
+
+                    return (
+                        <div key={quiz.id} className="quiz-item">
+                            <p><strong>{quiz.title}</strong></p>
+                            {/* Corrected: Access the specific score for this quiz ID */}
+                            <p>Score: {score} out of {totalQuestions}</p>
+                        </div>
+                    );
+                })
+            }
             <div className="pageFooter">
-                <a className="questionFooterPrevious" onClick={retakeQuiz}>retake quiz</a>
+                <a className="questionFooterPrevious" onClick={retakeQuiz}>retake {activeQuizId} quiz</a>
                 <a className="questionFooterNext" onClick={() => {navigate("/")}}>all quizez</a>
             </div>
         </div>
     )
 }
+

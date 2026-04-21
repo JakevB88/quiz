@@ -119,10 +119,11 @@ export default function QuestionsPage() {
                 <h1>{activeQuiz.title} Quiz</h1>
                 <h2>Question {currentQuestionIndex+1} of {questionOrder.length}</h2>
                 <div className="question">
-                    
-                    {/*if the question is 'multipleChoise'*/}
-                        {currentQuestion.type === 'multipleChoice' && (
+                    {console.log(`questionOrder ${questionOrder}`)}
+                    {/*if the question is 'multipleChoise' or 'trueFalse'*/}
+                        {(currentQuestion.type === 'multipleChoice' || currentQuestion.type === 'trueFalse') && (
                             <div>
+                                {console.log(`currentQuesiton ${currentQuestion.id}`)}
                                 <p>{currentQuestion.question}</p>
                                 <ul>
                                     {Object.entries(currentQuestion.options).map(([key, value]) => (
@@ -134,19 +135,7 @@ export default function QuestionsPage() {
                             </div>
                         )}
 
-                    {/*if the question is 'trueFalse'*/}
-                        {currentQuestion.type === 'trueFalse' && (
-                            <div>
-                                <p>{currentQuestion.question}</p>
-                                <ul>
-                                    {Object.entries(currentQuestion.options).map(([key, value]) => (
-                                    <li key={key} onClick={() => handleAnswerSelection(key)}>
-                                        {value}
-                                    </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
+                    
 
                     {/*if the question is 'fillBlank'*/}
                         {currentQuestion.type === 'fillBlank' && (

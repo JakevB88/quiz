@@ -3,6 +3,7 @@ import QuestionsPage from "../features/QuestionsPage";
 import HelpPage from "../features/HelpPage";
 import ResultsPage from "../features/ResultsPage";
 import homeIcon from "../images/homepage-icon.png";
+import resultsIcon from "../images/diagnostic-icon.png"
 import questionIcon from "../images/question-inquiry-icon.png"
 import { 
   Route, 
@@ -22,6 +23,12 @@ function Layout() {
     <div>
       <div className="header">
         <h1>Science Quiz</h1>
+        <img 
+          className="resultsIcon" 
+          src={resultsIcon} 
+          alt="results" 
+          onClick={() => {navigate("resultspage")}}
+        />
         <img 
           className="questionIcon" 
           src={questionIcon} 

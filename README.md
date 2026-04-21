@@ -67,9 +67,65 @@ Throughout the project:
 ---
 
 ## Core application
+### Challange 1#
+I want to have the option to implement multiple quizzes with different topics.
+I want the quizzes to be defined in the quizSlice.js using REDUX store.
+currently the hompage has the quiz topics and images hard coded like below.
+
+I do not want the hompage to be hardcoded, I want the hompage to cycle throught the quizzes and display them accordingly.
+this keeps the code in hompage nice and short and it will need minimal updates when new quizzes are introduced.
+
+I need to work out how to cylcle through the quizzes in the store and display the quiz title and immage where the immage is also the clickable link to do the quiz.
+And this without duplicate code for each quiz.
+
+using "Object.values().map(() => ())" will allow me to cycle through an object that has multiple objects inside.
+This can then be used in turn to dinamicly display the quiz title and immage stored in the individual quiz object.
+
+                {Object.values(quizzes).map((quiz) => (
+                    <div key={quiz.id} className="quiz-item">
+                        <p>{quiz.title}</p>
+                        <img className="quizImage"
+                            src={quizImageMap[quiz.img.key]} 
+                            alt={quiz.img.alt} 
+                            onClick={() => {navigate("/questionspage")}}
+                        />
+                    </div>
+                ))}
+### Challange 2#
+in the quizSlice the question object for "trueFalse" questions uses boolean values to confirm correct answer or not.
+v5: { 
+    id: 'v5', 
+    type: 'trueFalse', 
+    question: 'Some volcanoes form under the sea.', 
+    correctAnswer: True },
+                    
+This made validating the anwer different then validating the answer on the other type of questions in the resultslice.
+
+I did not like this approac so I changed the object for "trueFalse" questions to be the same as the other question types, with clear options for both "true" and "false" in an object.
+this way the same code that checks the other 2 question types can now be used for the "trueFalse" questions.
+
+v5: { 
+    id: 'v5', 
+    type: 'trueFalse', 
+    question: 'Some volcanoes form under the sea.', 
+    options: { a: 'true', b: 'false' }, 
+    correctAnswer: 'a' },
+                    
 
 
+### Challange 3#
+I could not get the questionspage to display the "multipleChoise" questions dinamicly after altering the object for "trueFalse" questions and giving it a legitamate answer (refer to Challange 2#).
 
+I used the below logic for determining what the question type was and displaying it accordingly:
+
+currentQuestion.type === 'multipleChoice' || currentQuestion.type === 'trueFalse' &&()
+
+Looking into this in more detail, I can see that for the left side of the ||  "currentQuestion.type === 'multipleChoice'" the statement is never checked for the && so it always fails.
+
+Adding parentheses solves the issue, with the below, both sides of the || are now checked for && JSX
+(currentQuestion.type === 'multipleChoice' || currentQuestion.type === 'trueFalse') &&()
+
+                
 ## Refferences
 - volcanoImage-alain-bonnardeaux-tLxGw_ITs7k-unsplash.jpg:              https://unsplash.com/photos/white-clouds-over-snow-covered-mountain-tLxGw_ITs7k 
 - bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.jpg:                    https://unsplash.com/photos/a-3d-image-of-the-human-body-and-the-structure-of-the-body-ZMK0DU5wARA
@@ -77,7 +133,7 @@ Throughout the project:
 - weatherImage-noaa-ZVhm6rEKEX8-unsplash.jpg:                           https://unsplash.com/photos/orange-and-gray-clouds-during-sunset-ZVhm6rEKEX8 
 - question-inquiry-icon.png:                                            https://uxwing.com/question-inquiry-icon/
 - homepage-icon.png                                                     https://uxwing.com/homepage-icon/
-
+- diagnostic-icon.png                                                   https://uxwing.com/diagnostic-icon/
 
 
 

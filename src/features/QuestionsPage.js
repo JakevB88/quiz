@@ -59,19 +59,22 @@ export default function QuestionsPage() {
         }
     };
 
-    const handleNext = () => {
-        //for fill in the blanks questions, store the answer to the store.
-        if (currentQuestion.type === 'fillBlank') {
-            // Convert the 'blanks' state object into an ordered array
-            // We use the blankCount to ensure we get the right number of answers in order
-            const finalAnswers = [];
-            for (let i = 0; i < currentQuestion.blankCount; i++) {
-                finalAnswers.push(blanks[i] || null); // Use null if they left it empty
+   const handleNext = () => {
+    if (currentQuestion.type === 'fillBlank') {
+        const finalAnswerKeys = [];
+        for (let i = 0; i < currentQuestion.blankCount; i++) {
+            const word = blanks[i];
+            if (word) {
+                const key = Object.keys(currentQuestion.options).find(
+                    (k) => currentQuestion.options[k] === word
+                );
+                finalAnswerKeys.push(key || null);
+            } else {
+                finalAnswerKeys.push(null);
             }
-            
-            // 2. Dispatch the answer to the store
-            handleAnswerSelection(finalAnswers);
         }
+        handleAnswerSelection(finalAnswerKeys); // Sends ['a', 'c']
+    }
 
         if (currentQuestionIndex < questionOrder.length - 1) {
             dispatch(nextQuestion());

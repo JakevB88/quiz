@@ -91,6 +91,8 @@ This can then be used in turn to dinamicly display the quiz title and immage sto
                         />
                     </div>
                 ))}
+
+                
 ### Challange 2#
 in the quizSlice the question object for "trueFalse" questions uses boolean values to confirm correct answer or not.
 v5: { 
@@ -110,7 +112,6 @@ v5: {
     question: 'Some volcanoes form under the sea.', 
     options: { a: 'true', b: 'false' }, 
     correctAnswer: 'a' },
-                    
 
 
 ### Challange 3#
@@ -125,7 +126,20 @@ Looking into this in more detail, I can see that for the left side of the ||  "c
 Adding parentheses solves the issue, with the below, both sides of the || are now checked for && JSX
 (currentQuestion.type === 'multipleChoice' || currentQuestion.type === 'trueFalse') &&()
 
-                
+### challange 4#
+The results page will show a score of 8/10 yet the answers show that 4 answers are incorrect.
+- Compare temporary initial state results for testing against correct answers
+    - this shows that 2 answers are incorrect so 8/10 is correct
+- find out which answers are marked wrong incorrectly
+    - both the "fillInBlanks" questions are marked wrong incorrectly
+- in the temporary initial state I set the answers to "v3: ['a', 'c']" and "7: ['e', 'b']"
+    - changed it to "v3: ['active', 'dormant']" and v7: ['outer', 'plates'] as this is what the resluts actually would record when the question is answered.
+- now the score drops to 6/10 but the answers show only 2 incorrect answers
+    - this indicates that the validation is different in the store to the results page
+- the validation should be the same and should use the same code if possible
+- update to store the key instead of the word in Questionspage
+- update the results.slice to fix deal with the keys and not the words
+
 ## Refferences
 - volcanoImage-alain-bonnardeaux-tLxGw_ITs7k-unsplash.jpg:              https://unsplash.com/photos/white-clouds-over-snow-covered-mountain-tLxGw_ITs7k 
 - bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.jpg:                    https://unsplash.com/photos/a-3d-image-of-the-human-body-and-the-structure-of-the-body-ZMK0DU5wARA

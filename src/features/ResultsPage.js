@@ -45,11 +45,11 @@ export default function ResultsPage() {
         
         //Handle Fill in the Blanks (Arrays)
         if (question.type === "fillBlank" && Array.isArray(answer)) {
-            return answer.map(item => {
-                if (question.options && question.options[item]) {
-                return question.options[item]; 
+            return answer.map(key => {
+                if (question.options && question.options[key]) {
+                return question.options[key]; 
             }
-            return item;
+            return key;
         }).join(", ");
         }
         
@@ -107,11 +107,10 @@ export default function ResultsPage() {
                         {hasStarted ? (
                             <div className="questions-review">
                                 {Object.values(quiz.questions).map((question) => {
-                                    // FIX: Define uAns and use 'question' instead of 'q' or 'quiz'
                                     const uAns = userAnswers[question.id];
-                                    const isCorrect = Array.isArray(question.correctAnswer) 
-                                        ? JSON.stringify(uAns) === JSON.stringify(question.correctAnswer.map(k => question.options[k]))
-                                        : String(uAns) === String(question.correctAnswer);
+                                    const userWord = JSON.stringify(formatAnswer(question, uAns));
+                                    const correctWord = JSON.stringify(formatAnswer(question, question.correctAnswer));
+                                    const isCorrect = userWord === correctWord;
 
                                     return (
                                         <div key={question.id} className={`review-card ${isCorrect ? 'correct' : 'wrong'}`}>

@@ -15,7 +15,7 @@ export const resultsSlice = createSlice({
                 v6: 'c', v7: ['e', 'b'], v8: 'a', v9: 'a', v10: 'c'
             },
             weather: {
-                w1: 'a', w2: 'a', w3: ['rain', 'snow'], w4: 'b', w5: 'a',
+                w1: 'a', w2: 'a', w3: ['b', 'a'], w4: 'b', w5: 'a',
                 w6: 'c', w7: ['b'], w8: 'b', w9: 'a', w10: 'c'
             },
             solarSystem: {
@@ -62,9 +62,18 @@ const calculateScore = (quizData, userAnswers) => {
 
         if (userAnswer === undefined || userAnswer === null) return;
 
-        // Use String() to handle Boolean vs String mismatches
-        if (String(userAnswer) === String(correctAnswer)) {
+        // Helper to turn any answer (key or word) into its final word value
+        const getWord = (val) => {
+            if (Array.isArray(val)) {
+                return val.map(item => (question.options && question.options[item]) ? question.options[item] : item);
+            }
+            return (question.options && question.options[val]) ? question.options[val] : String(val);
+        };
 
+        const userWord = JSON.stringify(getWord(userAnswer));
+        const correctWord = JSON.stringify(getWord(correctAnswer));
+
+        if (userWord === correctWord) {
             score++;
         }
     });

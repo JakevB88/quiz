@@ -140,6 +140,12 @@ The results page will show a score of 8/10 yet the answers show that 4 answers a
 - update to store the key instead of the word in Questionspage
 - update the results.slice to fix deal with the keys and not the words
 
+#### challange 5#
+Git states my 2 branches are the same
+<img src="public/media/challange-5#/GitBash_Screenshot-1.png" alt="GitBash screenshot showing 2 branches are the same" width="400"/>
+Yet looking at ResultsPage.js it is clear that there are differences between the 2 branches.
+<img src="public/media/challange-5#/GitBash_Screenshot-2.png" alt="GitBash screenshot showing 2 branches are not the same" width="400"/>
+
 ## Refferences
 - volcanoImage-alain-bonnardeaux-tLxGw_ITs7k-unsplash.jpg:              https://unsplash.com/photos/white-clouds-over-snow-covered-mountain-tLxGw_ITs7k 
 - bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.jpg:                    https://unsplash.com/photos/a-3d-image-of-the-human-body-and-the-structure-of-the-body-ZMK0DU5wARA

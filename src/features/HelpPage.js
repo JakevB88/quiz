@@ -3,7 +3,7 @@
 export default function HelpPage() {
     return(
         <div>
-            <h1>HelpPage</h1>
+            <h2>HelpPage</h2>
             <h2>Quiz application</h2>
             <p>
                 This Quiz application allows you to take a quiz from the multiple quizzes shown on the homepage.

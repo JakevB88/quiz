@@ -119,8 +119,8 @@ export default function QuestionsPage() {
     return (
         <div>
             <div>
-                <h1>{activeQuiz.title} Quiz</h1>
-                <h2>Question {currentQuestionIndex+1} of {questionOrder.length}</h2>
+                <h2>{activeQuiz.title} Quiz</h2>
+                <h3>Question {currentQuestionIndex+1} of {questionOrder.length}</h3>
                 <div className="question">
                     {console.log(`questionOrder ${questionOrder}`)}
                     {/*if the question is 'multipleChoise' or 'trueFalse'*/}

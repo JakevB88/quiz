@@ -1,7 +1,7 @@
-import volcanoImage from "../images/volcanoImage-alain-bonnardeaux-tLxGw_ITs7k-unsplash.jpg";
-import solarSystemImage from "../images/solarSystemImagenasa-hubble-space-telescope-rZhFmSl1Jow-unsplash.jpg";
-import weatherImage from "../images/weatherImage-noaa-ZVhm6rEKEX8-unsplash.jpg";
-import bodyImage from "../images/bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.jpg";
+import volcanoImage from "../images/volcanoImage-alain-bonnardeaux-tLxGw_ITs7k-unsplash.webp";
+import solarSystemImage from "../images/solarSystemImagenasa-hubble-space-telescope-rZhFmSl1Jow-unsplash.webp";
+import weatherImage from "../images/weatherImage-noaa-ZVhm6rEKEX8-unsplash.webp";
+import bodyImage from "../images/bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.webp";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { startQuiz, nextQuestion, resetQuiz, selectQuiz } from "../store/quizSlice"
@@ -31,11 +31,11 @@ export default function HomePage() {
 
     return(
         <div>
-            <h1>Quiz Topics</h1>
+            <h2 className="pageTitle">Quiz Topics</h2>
             <div className="quizzes">
                 {Object.values(quizzes).map((quiz) => (
                     <div key={quiz.id} className="quiz-item">
-                        <p>{quiz.title}</p>
+                        <p className="quizTitle">{quiz.title}</p>
                         <img className="quizImage"
                             src={quizImageMap[quiz.img.key]} 
                             alt={quiz.img.alt} 

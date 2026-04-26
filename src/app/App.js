@@ -23,25 +23,28 @@ function Layout() {
     <div>
       <div className="header">
         <h1>Science Quiz</h1>
-        <img 
-          className="resultsIcon" 
-          src={resultsIcon} 
-          alt="results" 
-          onClick={() => {navigate("resultspage")}}
-        />
-        <img 
-          className="questionIcon" 
-          src={questionIcon} 
-          alt="help" 
-          onClick={() => {navigate("helppage")}}
-        />
-        <img 
-          className="homeIcon" 
-          src={homeIcon} 
-          alt="home" 
-          onClick={() => {navigate("/")}}
-        />
+        <div className="headerIcons">
+          <img 
+            className="resultsIcon" 
+            src={resultsIcon} 
+            alt="results" 
+            onClick={() => {navigate("resultspage")}}
+          />
+          <img 
+            className="questionIcon" 
+            src={questionIcon} 
+            alt="help" 
+            onClick={() => {navigate("helppage")}}
+          />
+          <img 
+            className="homeIcon" 
+            src={homeIcon} 
+            alt="home" 
+            onClick={() => {navigate("/")}}
+          />
+        </div>
       </div>
+      <hr className="header-line" />
       <Outlet />
     </div>
   );

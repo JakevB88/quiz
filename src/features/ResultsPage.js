@@ -81,7 +81,7 @@ export default function ResultsPage() {
 
     return (
         <div>
-            <h1>ResultsPage</h1>
+            <h2>ResultsPage</h2>
             <span>reset results: 
                 <img className="resetResults" src={resetResultsIcon} alt="reset results" onClick={handleReset} />
             </span>

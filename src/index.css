@@ -16,10 +16,37 @@ code {
 
 
 
-.quizzes, .header {
+.quizzes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 1.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Pushes title to left and icons to right */
+  align-items: center;     
+  margin-left: 2%;
+  margin-right: 2%;
+}
+.header-line {
+  border: none;
+  height: 3px;
+  background-color: #dfe6e9;
+  margin: 0; /* Removes default margins to touch the edges */
+  width: 100%;
+}
+
+.headerIcons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.headerIcons img {
+  width: 40px;                   
+  height: auto;
+  cursor: pointer;
 }
 
 .quiz-item {
@@ -27,10 +54,6 @@ code {
   flex-direction: column;
   align-items: left;
   text-align: left;
-}
-
-.questionIcon, .homeIcon, .resultsIcon, .resetResults {
-  max-width: 40px;
 }
 
 .listIcon {
@@ -41,14 +64,49 @@ code {
   display: inline;
 }
 
-
 .pageFooter {
   display: flex;
   gap: 50px;
 }
 
+h2, h1 {
+  font-family: 'Inter', sans-serif; /* Or any clean sans-serif */
+  font-weight: 600;
+  color: #2d3436;
+  margin-top: 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  text-align: left;
+}
 
+h1 {
+  font-size: clamp(16px, 3vw, 50px);
+}
 
+h2 {
+  font-size: clamp(10px, 3vw, 40px);
+}
+
+.quizTitle {
+  font-family: 'Inter', sans-serif; /* Or any clean sans-serif */
+  font-size: clamp(8px, 3vw, 30px);
+  font-weight: 600;
+  color: #2d3436;
+  margin-top: 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.quizImage {
+  width: 100%;  
+  max-width: 300px;          
+  aspect-ratio: 1 / 1;    /*height to match the width */
+  object-fit: cover;      /*Crop to fill the square*/
+  object-position: center; /*center of the image is visible */
+  border-radius: 10px;     
+  cursor: pointer;
+}
 
 .blank {
   display: inline-flex;

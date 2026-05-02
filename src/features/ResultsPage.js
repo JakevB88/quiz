@@ -80,12 +80,12 @@ export default function ResultsPage() {
     };
 
     return (
-        <div>
-            <h2>ResultsPage</h2>
-            <span>reset results: 
-                <img className="resetResults" src={resetResultsIcon} alt="reset results" onClick={handleReset} />
-            </span>
-            
+        <div className="resultspage">
+            <div className="header">
+                <h2>ResultsPage</h2>
+                    <img className="resetResults" src={resetResultsIcon} alt="reset results" onClick={handleReset} />
+                
+            </div>
             {activeQuiz && (
                 <div>
                     <p>Congratulations you have completed the quiz on {activeQuiz.title}</p>
@@ -105,7 +105,7 @@ export default function ResultsPage() {
                     <div key={quiz.id} className="quizReviewItem">
                         <h3>{quiz.title} (Score: {quizScores[quiz.id]})</h3>
                         {hasStarted ? (
-                            <div className="questions-review">
+                            <div>
                                 {Object.values(quiz.questions).map((question) => {
                                     const uAns = userAnswers[question.id];
                                     const userWord = JSON.stringify(formatAnswer(question, uAns));
@@ -113,14 +113,16 @@ export default function ResultsPage() {
                                     const isCorrect = userWord === correctWord;
 
                                     return (
-                                        <div key={question.id} className={`review-card ${isCorrect ? 'correct' : 'wrong'}`}>
-                                            <p><strong>Question:</strong> {question.type === 'fillBlank' ? formatQuestion(question): question.question}</p>
-                                            <p><strong>Your Answer:</strong> {formatAnswer(question, uAns)} {isCorrect ? "✅" : "❌"}</p>
-                                            {!isCorrect && (
-                                                <p className="correct-reveal">
-                                                    <strong>Correct Answer:</strong> {formatAnswer(question, question.correctAnswer)}
-                                                </p>
-                                            )}
+                                        <div key={question.id} className="questionsresult" >
+                                            <p><strong>Question {question.id}:</strong> {question.type === 'fillBlank' ? formatQuestion(question): question.question}</p>
+                                            <div className="questionsresult">
+                                                <p><strong>Your Answer:</strong> {formatAnswer(question, uAns)} {isCorrect ? "✅" : "❌"}</p>
+                                                {!isCorrect && (
+                                                    <p className="correct-reveal">
+                                                        <strong>Correct Answer:</strong> {formatAnswer(question, question.correctAnswer)}
+                                                    </p>
+                                                )}
+                                            </div>
                                         </div>
                                     );
                                 })}
@@ -130,7 +132,7 @@ export default function ResultsPage() {
                         )}
                     </div>
                 );
-            })} {/* FIX: Correctly closed the map loop here */}
+            })}
 
             <div className="pageFooter">
                 <a className="questionFooterNext" onClick={() => {navigate("/")}}>back to all quizzes</a>

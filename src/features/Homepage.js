@@ -30,8 +30,8 @@ export default function HomePage() {
 
 
     return(
-        <div>
-            <h2 className="pageTitle">Quiz Topics</h2>
+        <div className="homepage">
+            <h2>Quiz Topics</h2>
             <div className="quizzes">
                 {Object.values(quizzes).map((quiz) => (
                     <div key={quiz.id} className="quiz-item">

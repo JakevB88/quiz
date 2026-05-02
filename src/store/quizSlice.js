@@ -16,7 +16,7 @@ export const quizSlice = createSlice({
         quizzes: {
             volcanoes: {
                 id: 'volcanoes',
-                title: 'volcanoes',
+                title: 'Volcanoes',
                 img: {
                     key: 'volcano',
                     alt: "Immage showing an errupting volcano against a horrizon"
@@ -38,7 +38,7 @@ export const quizSlice = createSlice({
             },
             weather: {
                 id: 'weather',
-                title: 'weather',
+                title: 'Weather',
                 img: {
                     key: 'weather',
                     alt: "Immage showing a stromcloud hit by the light from a sunset with heavy rain coming from the cloud"
@@ -58,7 +58,7 @@ export const quizSlice = createSlice({
             },
             solarSystem: {
                 id: 'solarSystem',
-                title: 'solarSystem',
+                title: 'Solar-System',
                 img: {
                     key: 'solarSystem',
                     alt: "Immage showing an overview of our solarsystem"
@@ -78,7 +78,7 @@ export const quizSlice = createSlice({
             },
             body: {
                 id: 'body',
-                title: 'body',
+                title: 'Body',
                 img: {
                     key: 'body',
                     alt: "Image picturing the anatomy of a humen, in this case the torso and its sceleton"

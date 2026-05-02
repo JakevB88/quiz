@@ -1,39 +1,46 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/****************General*************************/
+h2, h1 {
+  font-family: 'Inter', sans-serif; 
+  font-weight: 600;
+  color: #391c69;
+  margin-top: 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  text-align: left;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1 {
+  font-size: clamp(16px, 4vw, 50px);
+}
+
+h2 {
+  font-size: clamp(10px, 3.5vw, 40px);
 }
 
 
 
 
 
-.quizzes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 1.5rem;
+
+/****************App.js*************************/
+.appheader {
+  margin-left: 2%;
+  margin-right: 2%;
+  max-width: 1200px;
 }
 
 .header {
   display: flex;
   justify-content: space-between; /* Pushes title to left and icons to right */
   align-items: center;     
-  margin-left: 2%;
-  margin-right: 2%;
 }
+
 .header-line {
   border: none;
   height: 3px;
   background-color: #dfe6e9;
-  margin: 0; /* Removes default margins to touch the edges */
+  margin: 0; 
+  margin-bottom: 3%;
   width: 100%;
 }
 
@@ -43,10 +50,23 @@ code {
   gap: 1rem;
 }
 
-.headerIcons img {
-  width: 40px;                   
+.headerIcons img, .resetResults {
+  width: clamp(16px, 3vw, 50px);                   
   height: auto;
   cursor: pointer;
+}
+
+/****************HomePage.js*************************/
+.homepage{
+  font-family: 'inter', sans-serif; 
+  font-size: clamp(16px, 2.5vw, 50px);
+  color: #391c69;
+}
+
+.quizzes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1.5rem;
 }
 
 .quiz-item {
@@ -56,43 +76,13 @@ code {
   text-align: left;
 }
 
-.listIcon {
-  color: blue;
-}
-
-.multipleChoiseItem {
-  display: inline;
-}
-
-.pageFooter {
-  display: flex;
-  gap: 50px;
-}
-
-h2, h1 {
-  font-family: 'Inter', sans-serif; /* Or any clean sans-serif */
-  font-weight: 600;
-  color: #2d3436;
-  margin-top: 12px;
-  letter-spacing: -0.01em;
-  line-height: 1.4;
-  text-align: left;
-}
-
-h1 {
-  font-size: clamp(16px, 3vw, 50px);
-}
-
-h2 {
-  font-size: clamp(10px, 3vw, 40px);
-}
-
 .quizTitle {
-  font-family: 'Inter', sans-serif; /* Or any clean sans-serif */
   font-size: clamp(8px, 3vw, 30px);
   font-weight: 600;
-  color: #2d3436;
+  font-style: italic;
+  text-decoration: underline;
   margin-top: 12px;
+  margin-bottom: 2%;
   letter-spacing: -0.01em;
   line-height: 1.4;
   text-align: left;
@@ -100,12 +90,31 @@ h2 {
 
 .quizImage {
   width: 100%;  
-  max-width: 300px;          
+  max-width: 500px;          
   aspect-ratio: 1 / 1;    /*height to match the width */
   object-fit: cover;      /*Crop to fill the square*/
   object-position: center; /*center of the image is visible */
   border-radius: 10px;     
   cursor: pointer;
+}
+
+/****************QuestionsPage.js*************************/
+.questionpage {
+  font-family: 'inter', sans-serif; 
+  color: #391c69;
+}
+
+.pointer {
+ cursor: pointer;
+
+}
+.selected-bold {
+    font-weight: bold;
+}
+
+.pageFooter {
+  display: flex;
+  gap: 50px;
 }
 
 .blank {
@@ -120,9 +129,24 @@ h2 {
 
 .options li {
   padding: 6px 10px;
-  background: #e0e0e0;
   cursor: grab;
   border-radius: 4px;
+}
+
+
+/****************ResultsPage.js*************************/
+.resultspage {
+  font-family: 'inter', sans-serif; 
+  font-size: clamp(10px, 2vw, 20px);
+  color: #391c69;
+}
+
+.quizReviewItem {
+  margin-top: 4%;
+}
+
+.questionsresult {
+  margin-left: 4%;
 }
 
 

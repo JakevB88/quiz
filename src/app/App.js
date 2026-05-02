@@ -20,7 +20,7 @@ function Layout() {
   const navigate = useNavigate();
   
   return (
-    <div>
+    <div className="appheader">
       <div className="header">
         <h1>Science Quiz</h1>
         <div className="headerIcons">

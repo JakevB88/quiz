@@ -17,6 +17,7 @@ import {
 } from "../store/resultsSlice";
 
 
+
 export default function QuestionsPage() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -25,7 +26,7 @@ export default function QuestionsPage() {
     const activeQuizId = useSelector(selectActiveQuizId);
     const currentQuestionIndex = useSelector(selectCurrentQuestionIndex);
     const activeQuiz = quizzes[activeQuizId];
-    const asnwerForQuiz = useSelector(selectAnswersForQuiz);
+    const asnwerForQuiz = useSelector(state => selectAnswersForQuiz(state, activeQuizId));
     const questionOrder = useSelector(selectQuestionOrder);
     const currentQuestionId = questionOrder[currentQuestionIndex];
     const currentQuestion = activeQuiz.questions[currentQuestionId];
@@ -37,6 +38,33 @@ export default function QuestionsPage() {
         blank3: null,
         blank4: null,
     });
+
+    //load the state for the drag/drop questions
+    useEffect(() => {
+        if (currentQuestion.type === 'fillBlank') {
+            const storedAnswerKeys = asnwerForQuiz[currentQuestion.id];
+
+            if (storedAnswerKeys && Array.isArray(storedAnswerKeys)) {
+                //Convert the keys ('a', 'c') back into the actual words
+                const loadedBlanks = {};
+                storedAnswerKeys.forEach((key, index) => {
+                    if (key) {
+                        loadedBlanks[index] = currentQuestion.options[key];
+                    }
+                });
+                
+                //Update the local state
+                setBlanks(loadedBlanks);
+            } else {
+                //Reset if no answer exists
+                setBlanks({});
+            }
+        } else {
+            setBlanks({}); //reset if not a fillBlank question
+        }
+    }, [currentQuestion.id, asnwerForQuiz]); //run when currentQuestion updates or answerForQuiz
+
+
 
     const results = useSelector(state => state.results);
     useEffect(() => {
@@ -114,10 +142,10 @@ export default function QuestionsPage() {
         }));
     };
 
-
+     
 
     return (
-        <div>
+        <div className="questionpage">
             <div>
                 <h2>{activeQuiz.title} Quiz</h2>
                 <h3>Question {currentQuestionIndex+1} of {questionOrder.length}</h3>
@@ -127,10 +155,14 @@ export default function QuestionsPage() {
                         {(currentQuestion.type === 'multipleChoice' || currentQuestion.type === 'trueFalse') && (
                             <div>
                                 {console.log(`currentQuesiton ${currentQuestion.id}`)}
+                                
                                 <p>{currentQuestion.question}</p>
-                                <ul>
+                                <ul >
                                     {Object.entries(currentQuestion.options).map(([key, value]) => (
-                                    <li key={key} onClick={() => handleAnswerSelection(key)}>
+                                    
+                                    <li key={key} 
+                                        className={`pointer ${asnwerForQuiz[currentQuestion.id] === key ? 'selected-bold' : ''}`}  
+                                        onClick={() => handleAnswerSelection(key)}>
                                         {value}
                                     </li>
                                     ))}
@@ -165,7 +197,7 @@ export default function QuestionsPage() {
                                         );
                                     })}
                                 </p>
-
+                               
                                 <ul className="options">
                                     {Object.values(currentQuestion.options)
                                         .filter((word) => !Object.values(blanks).includes(word))
@@ -181,7 +213,7 @@ export default function QuestionsPage() {
             </div>
             <div className="pageFooter">
                 {currentQuestionIndex > 0 ? (
-                    <a onClick={handlePrevious}>
+                    <a className="pointer" onClick={handlePrevious}>
                         previous
                     </a>
                 ) : (
@@ -191,7 +223,7 @@ export default function QuestionsPage() {
 
 
 
-                <a onClick={handleNext}> 
+                <a onClick={handleNext} className="pointer"> 
                     {currentQuestionIndex < questionOrder.length - 1 ? "next" : "submit"}
                 </a>
             </div> 

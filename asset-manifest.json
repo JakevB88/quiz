@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/quiz/static/css/main.7ef7a95d.css",
+    "main.css": "/quiz/static/css/main.4a3c4703.css",
     "main.js": "/quiz/static/js/main.fb07cdc0.js",
     "static/js/453.57c2c991.chunk.js": "/quiz/static/js/453.57c2c991.chunk.js",
     "static/media/bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.webp": "/quiz/static/media/bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.fe7031a5ce788fecc170.webp",
@@ -10,12 +10,12 @@
     "static/media/weatherImage-noaa-ZVhm6rEKEX8-unsplash.webp": "/quiz/static/media/weatherImage-noaa-ZVhm6rEKEX8-unsplash.844281a80aaf9e7982ff.webp",
     "static/media/text-document-remove-icon.webp": "/quiz/static/media/text-document-remove-icon.95ee914d69bef00997c9.webp",
     "index.html": "/quiz/index.html",
-    "main.7ef7a95d.css.map": "/quiz/static/css/main.7ef7a95d.css.map",
+    "main.4a3c4703.css.map": "/quiz/static/css/main.4a3c4703.css.map",
     "main.fb07cdc0.js.map": "/quiz/static/js/main.fb07cdc0.js.map",
     "453.57c2c991.chunk.js.map": "/quiz/static/js/453.57c2c991.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ef7a95d.css",
+    "static/css/main.4a3c4703.css",
     "static/js/main.fb07cdc0.js"
   ]
 }

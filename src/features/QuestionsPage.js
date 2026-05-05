@@ -1,18 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ResultsPage from "./ResultsPage";
-import {  
-    selectQuiz, 
-    selectActiveQuizId, 
+import {
+    selectQuiz,
+    selectActiveQuizId,
     selectCurrentQuestionIndex,
     selectQuestionOrder,
     nextQuestion,
-    previousQuestion 
+    previousQuestion
 } from "../store/quizSlice";
 import { useSelector, useDispatch } from "react-redux";
 import {
     recordAnswer,
-    resetQuizResults,
     selectAnswersForQuiz
 } from "../store/resultsSlice";
 
@@ -22,7 +20,7 @@ export default function QuestionsPage() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const quizzes = useSelector(selectQuiz); 
+    const quizzes = useSelector(selectQuiz);
     const activeQuizId = useSelector(selectActiveQuizId);
     const currentQuestionIndex = useSelector(selectCurrentQuestionIndex);
     const activeQuiz = quizzes[activeQuizId];
@@ -32,37 +30,28 @@ export default function QuestionsPage() {
     const currentQuestion = activeQuiz.questions[currentQuestionId];
 
     //create the state for the blanks in the drag/drop questions
-    const [blanks, setBlanks] = useState({
-        blank1: null,
-        blank2: null,
-        blank3: null,
-        blank4: null,
-    });
+    const [blanks, setBlanks] = useState({});
 
-    //load the state for the drag/drop questions
+    //load the state for the fillBlank questions
     useEffect(() => {
         if (currentQuestion.type === 'fillBlank') {
             const storedAnswerKeys = asnwerForQuiz[currentQuestion.id];
 
             if (storedAnswerKeys && Array.isArray(storedAnswerKeys)) {
-                //Convert the keys ('a', 'c') back into the actual words
                 const loadedBlanks = {};
                 storedAnswerKeys.forEach((key, index) => {
                     if (key) {
                         loadedBlanks[index] = currentQuestion.options[key];
                     }
                 });
-                
-                //Update the local state
                 setBlanks(loadedBlanks);
             } else {
-                //Reset if no answer exists
-                setBlanks({});
+                setBlanks({}); // Reset if no answer exists
             }
         } else {
-            setBlanks({}); //reset if not a fillBlank question
+            setBlanks({}); // Reset if not a fillBlank question
         }
-    }, [currentQuestion.id, asnwerForQuiz]); //run when currentQuestion updates or answerForQuiz
+    }, [currentQuestion.id, asnwerForQuiz]);
 
 
 
@@ -81,9 +70,9 @@ export default function QuestionsPage() {
     }
 
     const handlePrevious = () => {
-        if (currentQuestionIndex < questionOrder.length - 1) {
+        if (currentQuestionIndex > 0) { // Changed condition to check if not the first question
             dispatch(previousQuestion());
-        } else {
+            setBlanks({}); // Reset blanks for the previous question
         }
     };
 
@@ -101,7 +90,7 @@ export default function QuestionsPage() {
                 finalAnswerKeys.push(null);
             }
         }
-        handleAnswerSelection(finalAnswerKeys); // Sends ['a', 'c']
+        handleAnswerSelection(finalAnswerKeys);
     }
 
         if (currentQuestionIndex < questionOrder.length - 1) {
@@ -121,28 +110,28 @@ export default function QuestionsPage() {
         }));
     }
 
+    const handleClickOption = (word) => {
+        setBlanks((prevBlanks) => {
+            const newBlanks = { ...prevBlanks };
+            // Find the first empty blank
+            let filled = false;
+            for (let i = 0; i < currentQuestion.blankCount; i++) {
+                if (newBlanks[i] === undefined || newBlanks[i] === null) {
+                    newBlanks[i] = word;
+                    filled = true;
+                    break;
+                }
+            }
+            return filled ? newBlanks : prevBlanks;
+        });
+    };
 
-    //Logic for the drag and drop question
-    const drag = (e) => {
-        e.dataTransfer.setData("text/plain", e.target.id);
-    };
-    const allowDrop = (e) => e.preventDefault();
-    const dropIntoBlank = (blankKey) => (e) => {
-        e.preventDefault();
-        const word = e.dataTransfer.getData("text/plain");
-        setBlanks((prev) => ({
-            ...prev,
-            [blankKey]: word
-        }));
-    };
     const clearBlank = (blankKey) => {
-        setBlanks((prev) => ({
-            ...prev,
+        setBlanks((prevBlanks) => ({
+            ...prevBlanks,
             [blankKey]: null
         }));
     };
-
-     
 
     return (
         <div className="questionpage">
@@ -151,7 +140,7 @@ export default function QuestionsPage() {
                 <h3>Question {currentQuestionIndex+1} of {questionOrder.length}</h3>
                 <div className="question">
                     {console.log(`questionOrder ${questionOrder}`)}
-                    {/*if the question is 'multipleChoise' or 'trueFalse'*/}
+                    {/*if the question is multipleChoise or trueFalse*/}
                         {(currentQuestion.type === 'multipleChoice' || currentQuestion.type === 'trueFalse') && (
                             <div>
                                 {console.log(`currentQuesiton ${currentQuestion.id}`)}
@@ -172,7 +161,7 @@ export default function QuestionsPage() {
 
                     
 
-                    {/*if the question is 'fillBlank'*/}
+                    {/*if the question is fillBlank*/}
                         {currentQuestion.type === 'fillBlank' && (
                             <div>
                                 <p>
@@ -185,10 +174,8 @@ export default function QuestionsPage() {
                                                 {partText}
                                                 {!isLastPart && (
                                                     <span
-                                                        className="blank"
-                                                        onDrop={dropIntoBlank(index)} // Use index as the ID
-                                                        onDragOver={allowDrop}
-                                                        onClick={() => clearBlank(index)}
+                                                        className="blank pointer"
+                                                        onClick={() => clearBlank(index)} // Click to clear blank
                                                     >
                                                         {blanks[index] ?? "_____"}
                                                     </span>
@@ -200,9 +187,14 @@ export default function QuestionsPage() {
                                
                                 <ul className="options">
                                     {Object.values(currentQuestion.options)
-                                        .filter((word) => !Object.values(blanks).includes(word))
+                                        .filter((word) => !Object.values(blanks).includes(word)) //Filter out words already in blanks
                                         .map((word) => (
-                                            <li key={word} id={word} draggable onDragStart={drag}>
+                                            <li 
+                                                key={word} 
+                                                id={word} 
+                                                className="pointer"
+                                                onClick={() => handleClickOption(word)} // Click to fill blank
+                                            >
                                                 {word}
                                             </li>
                                         ))}
@@ -219,7 +211,6 @@ export default function QuestionsPage() {
                 ) : (
                     <span>1st question</span> 
                 )}
-
 
 
 

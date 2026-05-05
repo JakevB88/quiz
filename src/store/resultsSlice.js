@@ -3,12 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 export const resultsSlice = createSlice({
     name: 'results', //in the store this slice will be registered as "state.results"
     initialState: {
-        /*answersByQuiz: {
+        answersByQuiz: {
             volcanoes: {},
             weather: {},
             solarSystem: {},
             body: {}
-        }*/
+        }
+        /*
         answersByQuiz: {
             volcanoes: {
                 v1: 'a', v2: 'b', v3: ['a', 'c'], v4: 'c', v5: 'a',
@@ -25,8 +26,7 @@ export const resultsSlice = createSlice({
             body: {
                 b1: 'b', b2: 'b', b3: ['lungs', 'air'], b4: 'b', b5: 'a',
                 b6: 'b', b7: ['b'], b8: 'c', b9: 'a', b10: 'b'
-            }
-        }
+        }*/
     },
 
     reducers: {

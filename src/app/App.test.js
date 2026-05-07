@@ -23,7 +23,7 @@ describe("App routing and layout", () => {
       screen.getByRole("heading", { name: /Science Quiz/i })    ).toBeInTheDocument(); //test to see the header h1 is rendered correctly
 
     expect(
-      screen.getByText("Home Page")).toBeInTheDocument();//test to see if the mocked "Home Page" is rendered in the DOM
+      screen.getByText("Quiz Topics")).toBeInTheDocument();//test to see if the mocked "Home Page" is rendered in the DOM
   });
 
   it("navigates to HelpPage when help icon is clicked", async () => {

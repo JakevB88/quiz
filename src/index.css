@@ -10,16 +10,25 @@ h2, h1 {
 }
 
 h1 {
-  font-size: clamp(16px, 4vw, 50px);
+  font-size: clamp(2rem, 6vw, 4rem);
 }
 
 h2 {
-  font-size: clamp(10px, 3.5vw, 40px);
+  font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
 
-
-
+button:focus-visible {
+  outline: 2px solid #1d693a;
+  outline-offset: 5px;
+  border-radius: 8px;
+}
 
 
 /****************App.js*************************/
@@ -47,11 +56,15 @@ h2 {
 .headerIcons {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 2.5rem;
 }
 
+
+
+
+
 .headerIcons img, .resetResults {
-  width: clamp(16px, 3vw, 50px);                   
+  width: clamp(3rem, 5vw, 4rem);                   
   height: auto;
   cursor: pointer;
 }
@@ -59,7 +72,7 @@ h2 {
 /****************HomePage.js*************************/
 .homepage{
   font-family: 'inter', sans-serif; 
-  font-size: clamp(16px, 2.5vw, 50px);
+  font-size: clamp(2rem, 5vw, 4rem);
   color: #391c69;
 }
 
@@ -77,7 +90,7 @@ h2 {
 }
 
 .quizTitle {
-  font-size: clamp(8px, 3vw, 30px);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 600;
   font-style: italic;
   text-decoration: underline;
@@ -101,18 +114,30 @@ h2 {
 /****************QuestionsPage.js*************************/
 .questionpage {
   font-family: 'inter', sans-serif; 
+  font-size: clamp(1.25rem, calc(1rem + 2.5vw), 2rem);
   color: #391c69;
 }
 
 .pointer {
- cursor: pointer;
-
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
 }
+
+.questionNavigation {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  font-weight: bold;
+}
+
 .selected-bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .pageFooter {
+  margin-top: 5rem;
   display: flex;
   gap: 50px;
 }
@@ -128,15 +153,27 @@ h2 {
 }
 
 .options li {
-  padding: 6px 10px;
-  border-radius: 4px;
+  display: block;
+  width: 100%;
 }
+
+.options button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 1.5rem 1rem;
+  
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
 
 
 /****************ResultsPage.js*************************/
 .resultspage {
   font-family: 'inter', sans-serif; 
-  font-size: clamp(10px, 2vw, 20px);
+  font-size: clamp(1.25rem, calc(1rem + 2.5vw), 2rem);
   color: #391c69;
 }
 
@@ -144,8 +181,17 @@ h2 {
   margin-top: 4%;
 }
 
-.questionsresult {
-  margin-left: 4%;
+.quiztopic {
+  text-decoration: underline;
 }
 
+.questionsresult {
+  margin-left: 10%;
+}
 
+/****************HelpPage.js*************************/
+.helppage {
+  font-family: 'inter', sans-serif; 
+  font-size: clamp(1.25rem, calc(1rem + 2.5vw), 2rem);
+  color: #391c69;
+}

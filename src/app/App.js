@@ -24,24 +24,28 @@ function Layout() {
       <div className="header">
         <h1>Science Quiz</h1>
         <div className="headerIcons">
-          <img 
-            className="resultsIcon" 
-            src={resultsIcon} 
-            alt="results" 
-            onClick={() => {navigate("resultspage")}}
-          />
-          <img 
-            className="questionIcon" 
-            src={questionIcon} 
-            alt="help" 
-            onClick={() => {navigate("helppage")}}
-          />
-          <img 
-            className="homeIcon" 
-            src={homeIcon} 
-            alt="home" 
-            onClick={() => {navigate("/")}}
-          />
+          <button onClick={() => {navigate("resultspage")}}>
+            <img 
+              className="resultsIcon" 
+              src={resultsIcon} 
+              alt="results"   
+            />
+          </button>
+          <button onClick={() => {navigate("helppage")}}>
+            <img 
+              className="questionIcon" 
+              src={questionIcon} 
+              alt="help" 
+              
+            />
+          </button>
+          <button onClick={() => {navigate("/")}}> 
+            <img 
+              className="homeIcon" 
+              src={homeIcon} 
+              alt="home" 
+            />
+          </button>
         </div>
       </div>
       <hr className="header-line" />
@@ -59,7 +63,8 @@ const appRouter = createBrowserRouter(
     <Route path='resultspage' element={ <ResultsPage/>}/>
     <Route path='helppage' element={ <HelpPage/>}/>
   </Route>
-  )
+  ),
+  { basename: process.env.NODE_ENV === "test" ? "/" : "/quiz" } 
 );
 
 function App() {

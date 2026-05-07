@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from "react-router-dom"
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
-import HomePage from './HomePage';
+import HomePage from './homepage';
 
 //Mock pages to test routing and layout
 

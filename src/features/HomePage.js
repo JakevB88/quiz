@@ -4,8 +4,7 @@ import weatherImage from "../images/weatherImage-noaa-ZVhm6rEKEX8-unsplash.webp"
 import bodyImage from "../images/bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.webp";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { startQuiz, nextQuestion, resetQuiz, selectQuiz } from "../store/quizSlice"
-import QuestionsPage from "./QuestionsPage";
+import { startQuiz, selectQuiz } from "../store/quizSlice"
 import {resetQuizResults} from "../store/resultsSlice"
 
 export default function HomePage() {
@@ -36,11 +35,12 @@ export default function HomePage() {
                 {Object.values(quizzes).map((quiz) => (
                     <div key={quiz.id} className="quiz-item">
                         <p className="quizTitle">{quiz.title}</p>
-                        <img className="quizImage"
-                            src={quizImageMap[quiz.img.key]} 
-                            alt={quiz.img.alt} 
-                            onClick={() => handleQuizSelection(quiz.id)}  
-                        />
+                        <button onClick={() => handleQuizSelection(quiz.id)} >
+                            <img className="quizImage"
+                                src={quizImageMap[quiz.img.key]} 
+                                alt={quiz.img.alt} 
+                            />
+                        </button>
                     </div>
                 ))}
             </div>

@@ -24,7 +24,7 @@ export default function QuestionsPage() {
     const activeQuizId = useSelector(selectActiveQuizId);
     const currentQuestionIndex = useSelector(selectCurrentQuestionIndex);
     const activeQuiz = quizzes[activeQuizId];
-    const asnwerForQuiz = useSelector(state => selectAnswersForQuiz(state, activeQuizId));
+    const answerForQuiz = useSelector(state => selectAnswersForQuiz(state, activeQuizId));
     const questionOrder = useSelector(selectQuestionOrder);
     const currentQuestionId = questionOrder[currentQuestionIndex];
     const currentQuestion = activeQuiz.questions[currentQuestionId];
@@ -35,7 +35,7 @@ export default function QuestionsPage() {
     //load the state for the fillBlank questions
     useEffect(() => {
         if (currentQuestion.type === 'fillBlank') {
-            const storedAnswerKeys = asnwerForQuiz[currentQuestion.id];
+            const storedAnswerKeys = answerForQuiz[currentQuestion.id];
 
             if (storedAnswerKeys && Array.isArray(storedAnswerKeys)) {
                 const loadedBlanks = {};
@@ -51,7 +51,7 @@ export default function QuestionsPage() {
         } else {
             setBlanks({}); // Reset if not a fillBlank question
         }
-    }, [currentQuestion.id, asnwerForQuiz]);
+    }, [currentQuestion.id, answerForQuiz]);
 
 
 
@@ -136,7 +136,7 @@ export default function QuestionsPage() {
     return (
         <div className="questionpage">
             <div>
-                <h2>{activeQuiz.title} Quiz</h2>
+                <h2>{activeQuiz.title}</h2>
                 <h3>Question {currentQuestionIndex+1} of {questionOrder.length}</h3>
                 <div className="question">
                     {console.log(`questionOrder ${questionOrder}`)}
@@ -146,14 +146,16 @@ export default function QuestionsPage() {
                                 {console.log(`currentQuesiton ${currentQuestion.id}`)}
                                 
                                 <p>{currentQuestion.question}</p>
-                                <ul >
+                                <ul className="options">
                                     {Object.entries(currentQuestion.options).map(([key, value]) => (
-                                    
-                                    <li key={key} 
-                                        className={`pointer ${asnwerForQuiz[currentQuestion.id] === key ? 'selected-bold' : ''}`}  
-                                        onClick={() => handleAnswerSelection(key)}>
-                                        {value}
-                                    </li>
+                                        <li key={key}>
+                                            <button
+                                                onClick={() => handleAnswerSelection(key)}
+                                                className={`pointer ${answerForQuiz[currentQuestion.id] === key ? 'selected-bold' : ''}`}
+                                            >
+                                            - {value}
+                                            </button>
+                                        </li>
                                     ))}
                                 </ul>
                             </div>
@@ -189,13 +191,13 @@ export default function QuestionsPage() {
                                     {Object.values(currentQuestion.options)
                                         .filter((word) => !Object.values(blanks).includes(word)) //Filter out words already in blanks
                                         .map((word) => (
-                                            <li 
-                                                key={word} 
-                                                id={word} 
-                                                className="pointer"
-                                                onClick={() => handleClickOption(word)} // Click to fill blank
-                                            >
-                                                {word}
+                                            <li key={word}>
+                                                <button 
+                                                    className="pointer"
+                                                    onClick={() => handleClickOption(word)}
+                                                >
+                                                    - {word}
+                                                </button>
                                             </li>
                                         ))}
                                 </ul>
@@ -205,18 +207,18 @@ export default function QuestionsPage() {
             </div>
             <div className="pageFooter">
                 {currentQuestionIndex > 0 ? (
-                    <a className="pointer" onClick={handlePrevious}>
+                    <button className="questionNavigation" onClick={handlePrevious}>
                         previous
-                    </a>
+                    </button>
                 ) : (
-                    <span>1st question</span> 
+                    <span className="questionNavigation">1st question</span> 
                 )}
 
 
 
-                <a onClick={handleNext} className="pointer"> 
+                <button onClick={handleNext} className="questionNavigation"> 
                     {currentQuestionIndex < questionOrder.length - 1 ? "next" : "submit"}
-                </a>
+                </button>
             </div> 
         </div>
     )

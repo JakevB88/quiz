@@ -4,12 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import resetResultsIcon from "../images/text-document-remove-icon.webp"
 import {  
     selectQuiz, 
-    selectActiveQuizId, 
-    selectCurrentQuestionIndex,
-    selectQuestionOrder,
-    nextQuestion,
-    previousQuestion,
-    resetQuiz
+    selectActiveQuizId
 } from "../store/quizSlice";
 import {
     selectAllScores,
@@ -26,11 +21,6 @@ export default function ResultsPage() {
     const quizzes = useSelector(selectQuiz); 
     const allAnswers = useSelector(state => state.results.answersByQuiz);
     const activeQuiz = quizzes[activeQuizId];
-
-    const retakeQuiz = () => {
-        dispatch(resetQuiz())
-        navigate("/questionspage")
-    }
 
     const handleReset = () => {
         const confirmed = window.confirm("Reset all quiz results?");
@@ -83,8 +73,9 @@ export default function ResultsPage() {
         <div className="resultspage">
             <div className="header">
                 <h2>ResultsPage</h2>
-                    <img className="resetResults" src={resetResultsIcon} alt="reset results" onClick={handleReset} />
-                
+                <button onClick={handleReset}>
+                    <img  className="resetResults" src={resetResultsIcon} alt="reset results"  />
+                </button>
             </div>
             {activeQuiz && (
                 <div>
@@ -103,7 +94,7 @@ export default function ResultsPage() {
 
                 return (
                     <div key={quiz.id} className="quizReviewItem">
-                        <h3>{quiz.title} (Score: {quizScores[quiz.id]})</h3>
+                        <h3 className="quiztopic">{quiz.title} (Score: {quizScores[quiz.id]})</h3>
                         {hasStarted ? (
                             <div>
                                 {Object.values(quiz.questions).map((question) => {
@@ -116,7 +107,7 @@ export default function ResultsPage() {
                                         <div key={question.id} className="questionsresult" >
                                             <p><strong>Question {question.id}:</strong> {question.type === 'fillBlank' ? formatQuestion(question): question.question}</p>
                                             <div className="questionsresult">
-                                                <p><strong>Your Answer:</strong> {formatAnswer(question, uAns)} {isCorrect ? "✅" : "❌"}</p>
+                                                <p><strong >Your Answer:</strong> {formatAnswer(question, uAns)} {isCorrect ? "✅" : "❌"}</p>
                                                 {!isCorrect && (
                                                     <p className="correct-reveal">
                                                         <strong>Correct Answer:</strong> {formatAnswer(question, question.correctAnswer)}
@@ -128,15 +119,13 @@ export default function ResultsPage() {
                                 })}
                             </div>
                         ) : (
-                            <p><em>You haven't started this quiz yet.</em></p>
+                            <p className="questionsresult" ><em>You haven't started this quiz yet.</em></p>
                         )}
                     </div>
                 );
             })}
 
-            <div className="pageFooter">
-                <a className="questionFooterNext" onClick={() => {navigate("/")}}>back to all quizzes</a>
-            </div>
+
         </div>   
     );
 }

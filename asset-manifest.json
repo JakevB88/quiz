@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/quiz/static/css/main.a0b7339a.css",
-    "main.js": "/quiz/static/js/main.e58642fa.js",
+    "main.js": "/quiz/static/js/main.ff9a5463.js",
     "static/js/453.57c2c991.chunk.js": "/quiz/static/js/453.57c2c991.chunk.js",
     "static/media/bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.webp": "/quiz/static/media/bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.fe7031a5ce788fecc170.webp",
     "static/media/solarSystemImagenasa-hubble-space-telescope-rZhFmSl1Jow-unsplash.webp": "/quiz/static/media/solarSystemImagenasa-hubble-space-telescope-rZhFmSl1Jow-unsplash.6776b3f6eeca37145f7d.webp",
@@ -11,11 +11,11 @@
     "static/media/text-document-remove-icon.webp": "/quiz/static/media/text-document-remove-icon.95ee914d69bef00997c9.webp",
     "index.html": "/quiz/index.html",
     "main.a0b7339a.css.map": "/quiz/static/css/main.a0b7339a.css.map",
-    "main.e58642fa.js.map": "/quiz/static/js/main.e58642fa.js.map",
+    "main.ff9a5463.js.map": "/quiz/static/js/main.ff9a5463.js.map",
     "453.57c2c991.chunk.js.map": "/quiz/static/js/453.57c2c991.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a0b7339a.css",
-    "static/js/main.e58642fa.js"
+    "static/js/main.ff9a5463.js"
   ]
 }

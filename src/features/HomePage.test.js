@@ -2,8 +2,9 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from "react-router-dom"
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
-import HomePage from './homepage';
-
+import HomePage from './HomePage';
+import { Provider} from 'react-redux';
+import store from '../store/store'
 //Mock pages to test routing and layout
 
 jest.mock("../features/QuestionsPage", () => () => <div>Questions Page</div>);
@@ -12,31 +13,35 @@ jest.mock("../features/QuestionsPage", () => () => <div>Questions Page</div>);
 describe("HomePage routing and layout", () => {
     it("render HomePage and check content", () => {
         render(
-            <MemoryRouter>
-                <HomePage />
-            </MemoryRouter>
+            <Provider store={store}>
+                <MemoryRouter>
+                    <HomePage />
+                </MemoryRouter>
+            </Provider>
         );
 
         expect(screen.getByRole("heading", { name: /Quiz Topics/i })    ).toBeInTheDocument(); //test to see the header h1 is rendered correctly
 
         expect(screen.getByText("Volcanoes")).toBeInTheDocument();
         expect(screen.getByText("Weather")).toBeInTheDocument();
-        expect(screen.getByText("Solar System")).toBeInTheDocument();
+        expect(screen.getByText("Solar-System")).toBeInTheDocument();
         expect(screen.getByText("Body")).toBeInTheDocument();
     });
 
-    
+  
 
     it("navigates to QuestionsPage when volcano image is clicked", async () => {
         const user = userEvent.setup();
 
         render(
-        <MemoryRouter>
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/questionspage" element={<div>Questions Page</div>} />
-            </Routes>
-        </MemoryRouter>
+            <Provider store={store}>
+                <MemoryRouter>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/questionspage" element={<div>Questions Page</div>} />
+                    </Routes>
+                </MemoryRouter>
+            </Provider>
         );
 
         // Match the image by accessible name (alt text)
@@ -51,12 +56,14 @@ describe("HomePage routing and layout", () => {
         const user = userEvent.setup();
 
         render(
-        <MemoryRouter>
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/questionspage" element={<div>Questions Page</div>} />
-            </Routes>
-        </MemoryRouter>
+            <Provider store={store}>
+                <MemoryRouter>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/questionspage" element={<div>Questions Page</div>} />
+                    </Routes>
+                </MemoryRouter>
+            </Provider>
         );
 
         // Match the image by accessible name (alt text)
@@ -70,12 +77,14 @@ describe("HomePage routing and layout", () => {
         const user = userEvent.setup();
 
         render(
-        <MemoryRouter>
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/questionspage" element={<div>Questions Page</div>} />
-            </Routes>
-        </MemoryRouter>
+            <Provider store={store}>
+                <MemoryRouter>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/questionspage" element={<div>Questions Page</div>} />
+                    </Routes>
+                </MemoryRouter>
+            </Provider>
         );
 
         // Match the image by accessible name (alt text)
@@ -89,12 +98,14 @@ describe("HomePage routing and layout", () => {
         const user = userEvent.setup();
 
         render(
-        <MemoryRouter>
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/questionspage" element={<div>Questions Page</div>} />
-            </Routes>
-        </MemoryRouter>
+            <Provider store={store}>
+                <MemoryRouter>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/questionspage" element={<div>Questions Page</div>} />
+                    </Routes>
+                </MemoryRouter>
+            </Provider>
         );
 
         // Match the image by accessible name (alt text)
@@ -103,4 +114,5 @@ describe("HomePage routing and layout", () => {
 
         expect(screen.getByText("Questions Page")).toBeInTheDocument();
     });
+    
 });

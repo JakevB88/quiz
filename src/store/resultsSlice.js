@@ -7,7 +7,10 @@ export const resultsSlice = createSlice({
             volcanoes: {},
             weather: {},
             solarSystem: {},
-            body: {}
+            body: {},
+            earthquakes: {},
+            stormsAndHurricanes: {},
+            planetEarth: {}
         }
         /*
         answersByQuiz: {

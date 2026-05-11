@@ -32,9 +32,7 @@ export const quizSlice = createSlice({
                     v8: { id: 'v8', type: 'multipleChoice', question: 'Which of these can come out of a volcano?', options: { a: 'Gas and ash', b: 'Water and ice', c: 'Leaves and trees', d: 'Sand and shells' }, correctAnswer: 'a' },
                     v9: { id: 'v9', type: 'trueFalse', question: 'The Earth\'s crust is made of solid rock.', options: { a: 'true', b: 'false' }, correctAnswer: 'a' },
                     v10: { id: 'v10', type: 'multipleChoice', question: 'Where is the "Ring of Fire" located?', options: { a: 'Atlantic Ocean', b: 'Indian Ocean', c: 'Pacific Ocean', d: 'Arctic Ocean' }, correctAnswer: 'c' }
-                    },
-                    
-                
+                },   
             },
             weather: {
                 id: 'weather',
@@ -95,7 +93,63 @@ export const quizSlice = createSlice({
                     b9: { id: 'b9', type: 'trueFalse', question: 'Your skin is the largest organ in your body.', options: { a: 'true', b: 'false' }, correctAnswer: 'a' },
                     b10: { id: 'b10', type: 'multipleChoice', question: 'What are the tiny building blocks of your body called?', options: { a: 'Bricks', b: 'Cells', c: 'Seeds', d: 'Dots' }, correctAnswer: 'b' }
                 }
+            },       
+            earthquakes: {
+                id: 'earthquakes',
+                title: 'Earthquakes & Tsunamis',
+                img: { key: 'earthquake', alt: 'Image showing cracked road surface crumbling away after an earthquake' },
+                questions: {
+                    e1: { id: 'e1', type: 'multipleChoice', question: 'What is an earthquake?', options: { a: 'A sudden shaking of the ground', b: 'A type of thunderstorm', c: 'A very windy day', d: 'A flood caused by rain' }, correctAnswer: 'a' },
+                    e2: { id: 'e2', type: 'multipleChoice', question: 'Most earthquakes happen when huge pieces of Earth’s crust move. What are these pieces called?', options: { a: 'Glaciers', b: 'Tectonic plates', c: 'Cloud layers', d: 'River banks' }, correctAnswer: 'b' },
+                    e3: { id: 'e3', type: 'trueFalse', question: 'An earthquake can happen under the sea.', options: { a: 'true', b: 'false' }, correctAnswer: 'a' },
+                    e4: { id: 'e4', type: 'multipleChoice', question: 'What do we call the point on Earth’s surface directly above where an earthquake starts?', options: { a: 'Crater', b: 'Epicentre', c: 'Core', d: 'Mountain ridge' }, correctAnswer: 'b' },
+                    e5: { id: 'e5', type: 'fillBlank', blankCount: 2, question: { questionPart1: 'The earthquake starts deep underground at the', questionPart2: ', and the point on the surface above it is the', questionPart3: '.' }, options: { a: 'epicentre', b: 'focus', c: 'volcano', d: 'tsunami' }, correctAnswer: ['b', 'a'] },
+                    e6: { id: 'e6', type: 'multipleChoice', question: 'What is a tsunami?', options: { a: 'A wave of sand in the desert', b: 'A giant sea wave usually caused by movement under the ocean', c: 'A type of cloud', d: 'A mountain that grows overnight' }, correctAnswer: 'b' },
+                    e7: { id: 'e7', type: 'trueFalse', question: 'Aftershocks are smaller earthquakes that can happen after the main earthquake.', options: { a: 'true', b: 'false' }, correctAnswer: 'a' },
+                    e8: { id: 'e8', type: 'multipleChoice', question: 'Which tool is used to record shaking during an earthquake?', options: { a: 'Thermometer', b: 'Seismograph', c: 'Telescope', d: 'Compass' }, correctAnswer: 'b' },
+                    e9: { id: 'e9', type: 'multipleChoice', question: 'Which of these is the safest action during an earthquake indoors?', options: { a: 'Stand next to a window to watch', b: 'Run outside immediately', c: 'Drop, cover, and hold on under something sturdy', d: 'Hide under a tall bookshelf' }, correctAnswer: 'c' },
+                    e10: { id: 'e10', type: 'fillBlank', blankCount: 2, question: { questionPart1: 'Earthquakes often happen along cracks in the Earth called', questionPart2: ', where rocks can suddenly', questionPart3: '.' }, options: { a: 'faults', b: 'slide', c: 'rivers', d: 'freeze' }, correctAnswer: ['a', 'b'] }
+                }
+            },  
+            stormsAndHurricanes: {
+                id: 'stormsAndHurricanes',
+                title: 'Storms and Hurricanes',
+                img: { key: 'storm', alt: 'Image showing dark storm clouds with lightning over the sea' },
+                questions: {
+                    s1: { id: 's1', type: 'multipleChoice', question: 'What is lightning?', options: { a: 'A flash of electricity', b: 'A type of cloud', c: 'A strong wind', d: 'A loud sound' }, correctAnswer: 'a' }, 
+                    s2: { id: 's2', type: 'multipleChoice', question: 'What is thunder?', options: { a: 'The sound made by lightning', b: 'A kind of rain', c: 'A spinning cloud', d: 'A weather satellite' }, correctAnswer: 'a' }, 
+                    s3: { id: 's3', type: 'multipleChoice', question: 'If you hear thunder when you are outside, what should you do?', options: { a: 'Hide under a tree', b: 'Go inside a sturdy building or car', c: 'Stand in an open field', d: 'Hold something metal' }, correctAnswer: 'b' }, 
+                    s4: { id: 's4', type: 'multipleChoice', question: 'What is a hurricane?', options: { a: 'A small rain shower', b: 'A giant spinning storm that forms over warm seas', c: 'A snowstorm with hail', d: 'A cloud that makes fog' }, correctAnswer: 'b' }, 
+                    s5: { id: 's5', type: 'multipleChoice', question: 'What is the calm centre of a hurricane called?', options: { a: 'The crater', b: 'The eye', c: 'The core', d: 'The funnel' }, correctAnswer: 'b' }, 
+                    s6: { id: 's6', type: 'trueFalse', question: 'A hurricane can bring several dangers at the same time, like strong winds, flooding, storm surge, and tornadoes.', options: { a: 'true', b: 'false' }, correctAnswer: 'a' }, 
+                    s7: { id: 's7', type: 'fillBlank', blankCount: 2, question: { questionPart1: 'A storm with a spinning funnel is called a', questionPart2: ', and a giant spinning storm over warm seas is called a', questionPart3: '.' }, options: { a: 'tornado', b: 'hurricane', c: 'blizzard', d: 'drizzle' }, correctAnswer: ['a', 'b'] }, 
+                    s8: { id: 's8', type: 'multipleChoice', question: 'What do we call ice that falls from storm clouds in hard lumps?', options: { a: 'Mist', b: 'Hail', c: 'Steam', d: 'Dew' }, correctAnswer: 'b' }, 
+                    s9: { id: 's9', type: 'trueFalse', question: 'It is safe to stand under a tree during a thunderstorm.', options: { a: 'true', b: 'false' }, correctAnswer: 'b' }, 
+                    s10:{ id: 's10', type: 'multipleChoice', question: 'What can help scientists watch storms from space?', options: { a: 'A microscope', b: 'A weather satellite', c: 'A stethoscope', d: 'A magnifying glass' }, correctAnswer: 'b' }
+                }
+            },
+            planetEarth: {
+                id: 'planetEarth',
+                title: 'Planet Earth',
+                img: { key: 'planetEarth', alt: 'Image showing planet Earth from space with clouds and oceans' },
+                questions: {
+                    p1: { id: 'p1', type: 'fillBlank', blankCount: 2, question: {questionPart1: 'People who', questionPart2: 'accros the dessert often stop at an', questionPart3: 'for some rest.'}, options: { a: 'oasis', b: 'travel', c: 'fly', d: 'swimming pool' }, correctAnswer: ['b', 'a'] },
+                    p2: { id: 'p2', type: 'trueFalse', question: 'Earth is one of many planets known to have living things.', options: { a: 'true', b: 'false' }, correctAnswer: 'b' },
+                    p3: { id: 'p3', type: 'multipleChoice', question: 'What is the name for a process that wears away rocks and land over time?', options: { a: 'wearing', b: 'Freezing', c: 'Glowing', d: 'Erosion' }, correctAnswer: 'd' },
+                    p4: { id: 'p4', type: 'fillBlank', blankCount: 2, question: { questionPart1: 'All', questionPart2: 'things need', questionPart3: 'to stay alive.' }, options: { a: 'salt', b: 'water', c: 'living', d: 'animal' }, correctAnswer: ['c', 'b'] },
+                    p5: { id: 'p5', type: 'multipleChoice', question: 'Which of these is a real type of rock?', options: { a: 'Windy rock', b: 'Igneous rock', c: 'Cloud rock', d: 'Leaf rock' }, correctAnswer: 'b' },
+                    p6: { id: 'p6', type: 'multipleChoice', question: 'What is the largest island in the world', options: { a: 'England', b: 'Australia', c: 'Greenland', d: 'Japan' }, correctAnswer: 'c' },
+                    p7: { id: 'p7', type: 'trueFalse', question: 'Antarctica gets so cold in winter that even the sea freezes.', options: { a: 'true', b: 'false' }, correctAnswer: 'a' },
+                    p8: { id: 'p8', type: 'multipleChoice', question: 'Where can most sea creates be found', options: { a: 'In the deepest darkest places of the ocean', b: 'roughly in the middle depth of the ocean', c: 'near the surface where it is light and warm', d: 'in rock pools ' }, correctAnswer: 'c' },
+                    p9: { id: 'p9', type: 'fillBlank', blankCount: 2, question: {questionPart1: 'In caves you can find',questionPart2: 'stalagmites, and', questionPart3: 'stalactites.'}, options: { a: 'standing', b: 'hanging' }, correctAnswer: ['a', 'b'] },
+                    p10:{ id: 'p10', type: 'multipleChoice', question: 'What do you find on top of the highest mountains', options: { a: 'a stream', b: 'clouds', c: 'snow', d: 'sand' }, correctAnswer: ['c'] }
+                }
             }
+
+
+
+            
+
         },
         activeQuizId: null,
         currentQuestionIndex: 0,

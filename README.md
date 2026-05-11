@@ -162,9 +162,21 @@ This moved the performance score up to 100% instantly
 - bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.jpg:                    https://unsplash.com/photos/a-3d-image-of-the-human-body-and-the-structure-of-the-body-ZMK0DU5wARA
 - solarSystemImagenasa-hubble-space-telescope-rZhFmSl1Jow-unsplash.jpg: https://unsplash.com/photos/an-artists-rendering-of-the-solar-system-rZhFmSl1Jow 
 - weatherImage-noaa-ZVhm6rEKEX8-unsplash.jpg:                           https://unsplash.com/photos/orange-and-gray-clouds-during-sunset-ZVhm6rEKEX8 
+- nasa-i9w4Uy1pU-s-unsplash.webp:                                       https://unsplash.com/photos/typhoon-i9w4Uy1pU-s 
+- colin-lloyd-D7jnhK1xFPU-unsplash.webp                                 https://unsplash.com/photos/man-in-blue-jacket-and-blue-denim-jeans-walking-on-brown-wooden-bridge-during-daytime-D7jnhK1xFPU 
+- elena-mozhvilo-znhEe1cbbQE-unsplash.webp                              https://unsplash.com/photos/blue-green-and-yellow-abstract-painting-znhEe1cbbQE 
 - question-inquiry-icon.png:                                            https://uxwing.com/question-inquiry-icon/
 - homepage-icon.png                                                     https://uxwing.com/homepage-icon/
 - diagnostic-icon.png                                                   https://uxwing.com/diagnostic-icon/
+
+## Add more quizzes
+To add another quiz follow these steps:
+1. In quizSlice.js add a quiz object to the initialState, follow the format of the other quizzes.
+2. In resultsSlice.js add an empty array in the initialState for the quiz.
+3. Find an immage that is free to use and save it in the "images" directory (compress if required to .webp using https://squoosh.app/).
+4. Refference the immage in refferences on the README page.
+5. In homePage.js import the immage and add it to the "quizImageMap" object (ensure the key is the same name as the key in the image object in the quizSlice.js).
+6. in questionsPage.js import the image and add it to the "quizImageMap" object (agian use the same key).
 
 
 

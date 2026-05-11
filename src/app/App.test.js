@@ -12,10 +12,11 @@ jest.mock("../features/ResultsPage", () => () => <div>Results Page</div>);
 //Mock images with strings as jest can not deal with immages
 jest.mock("../images/homepage-icon.png", () => "home.png");
 jest.mock("../images/question-inquiry-icon.png", () => "help.png");
-
+jest.mock("../images/diagnostic-icon.png", () => "result.png");
 
 //group the test for App.js together using "describe"
 describe("App routing and layout", () => {
+  
   it("renders header and HomePage by default", () => {
     render(<App />);
 
@@ -23,7 +24,7 @@ describe("App routing and layout", () => {
       screen.getByRole("heading", { name: /Science Quiz/i })    ).toBeInTheDocument(); //test to see the header h1 is rendered correctly
 
     expect(
-      screen.getByText("Quiz Topics")).toBeInTheDocument();//test to see if the mocked "Home Page" is rendered in the DOM
+      screen.getByText("Home Page")).toBeInTheDocument();//test to see if the mocked "Home Page" is rendered in the DOM
   });
 
   it("navigates to HelpPage when help icon is clicked", async () => {
@@ -44,6 +45,21 @@ describe("App routing and layout", () => {
     const helpIcon = screen.getByAltText("help");
     await user.click(helpIcon);
     expect(screen.getByText("Help Page")).toBeInTheDocument();
+
+    // then go home
+    const homeIcon = screen.getByAltText("home");
+    await user.click(homeIcon);
+    expect(screen.getByText("Home Page")).toBeInTheDocument();
+  });
+
+  it("navigates to resultspage when results icon is clicked", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    // go to result page first
+    const resultIcon = screen.getByAltText("results");
+    await user.click(resultIcon);
+    expect(screen.getByText("Results Page")).toBeInTheDocument();
 
     // then go home
     const homeIcon = screen.getByAltText("home");

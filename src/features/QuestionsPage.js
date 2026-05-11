@@ -13,7 +13,13 @@ import {
     recordAnswer,
     selectAnswersForQuiz
 } from "../store/resultsSlice";
-
+import volcanoImage from "../images/volcanoImage-alain-bonnardeaux-tLxGw_ITs7k-unsplash.webp";
+import solarSystemImage from "../images/solarSystemImagenasa-hubble-space-telescope-rZhFmSl1Jow-unsplash.webp";
+import weatherImage from "../images/weatherImage-noaa-ZVhm6rEKEX8-unsplash.webp";
+import bodyImage from "../images/bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.webp";
+import earthquakeImage from "../images/colin-lloyd-D7jnhK1xFPU-unsplash.webp";
+import stormImage from "../images/nasa-i9w4Uy1pU-s-unsplash.webp";
+import earthImage from "../images/elena-mozhvilo-znhEe1cbbQE-unsplash.webp";
 
 
 export default function QuestionsPage() {
@@ -51,6 +57,7 @@ export default function QuestionsPage() {
         } else {
             setBlanks({}); // Reset if not a fillBlank question
         }
+        
     }, [currentQuestion.id, answerForQuiz]);
 
 
@@ -68,6 +75,16 @@ export default function QuestionsPage() {
             </div>
         );
     }
+
+    const quizImageMap = {
+        volcano: volcanoImage,
+        weather: weatherImage,
+        solarSystem: solarSystemImage,
+        body: bodyImage,
+        earthquake: earthquakeImage,
+        storm: stormImage,
+        planetEarth: earthImage
+    };
 
     const handlePrevious = () => {
         if (currentQuestionIndex > 0) { // Changed condition to check if not the first question
@@ -136,7 +153,13 @@ export default function QuestionsPage() {
     return (
         <div className="questionpage">
             <div>
-                <h2>{activeQuiz.title}</h2>
+                <div className="questionheader">
+                    <h2>{activeQuiz.title}</h2>
+                    <img className="quizImageq"
+                        src={quizImageMap[activeQuiz.img.key]} 
+                        alt={activeQuiz.img.alt} 
+                    />
+                </div>
                 <h3>Question {currentQuestionIndex+1} of {questionOrder.length}</h3>
                 <div className="question">
                     {console.log(`questionOrder ${questionOrder}`)}

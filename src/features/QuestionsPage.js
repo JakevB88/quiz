@@ -61,12 +61,6 @@ export default function QuestionsPage() {
     }, [currentQuestion.id, answerForQuiz]);
 
 
-
-    const results = useSelector(state => state.results);
-    useEffect(() => {
-        console.log("Current Results State:", results);
-    }, [results]);
-
     if (!activeQuiz) {
         return (
             <div style={{ padding: "20px", textAlign: "center" }}>
@@ -162,12 +156,9 @@ export default function QuestionsPage() {
                 </div>
                 <h3>Question {currentQuestionIndex+1} of {questionOrder.length}</h3>
                 <div className="question">
-                    {console.log(`questionOrder ${questionOrder}`)}
                     {/*if the question is multipleChoise or trueFalse*/}
                         {(currentQuestion.type === 'multipleChoice' || currentQuestion.type === 'trueFalse') && (
                             <div>
-                                {console.log(`currentQuesiton ${currentQuestion.id}`)}
-                                
                                 <p>{currentQuestion.question}</p>
                                 <ul className="options">
                                     {Object.entries(currentQuestion.options).map(([key, value]) => (

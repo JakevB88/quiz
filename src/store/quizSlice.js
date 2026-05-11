@@ -167,7 +167,7 @@ export const quizSlice = createSlice({
 
             const questionIds = Object.keys(quiz.questions);
             state.questionOrder = shuffleArray(questionIds);
-            console.log(`startQuiz ${quizId} questionOrder ${state.questionOrder}`)
+            console.log(`startQuiz ${quizId}, questionOrder ${state.questionOrder}`)
             }
             else {
                 console.error(`Quiz ${quizId} not found!`)

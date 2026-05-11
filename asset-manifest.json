@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/quiz/static/css/main.1a0ffabc.css",
-    "main.js": "/quiz/static/js/main.bd56bbe9.js",
+    "main.css": "/quiz/static/css/main.cd40145a.css",
+    "main.js": "/quiz/static/js/main.4f185eae.js",
     "static/js/453.57c2c991.chunk.js": "/quiz/static/js/453.57c2c991.chunk.js",
     "static/media/colin-lloyd-D7jnhK1xFPU-unsplash.webp": "/quiz/static/media/colin-lloyd-D7jnhK1xFPU-unsplash.a6402b0e0108150a0263.webp",
     "static/media/nasa-i9w4Uy1pU-s-unsplash.webp": "/quiz/static/media/nasa-i9w4Uy1pU-s-unsplash.71ebc639b10a60ff40aa.webp",
+    "static/media/elena-mozhvilo-znhEe1cbbQE-unsplash.webp": "/quiz/static/media/elena-mozhvilo-znhEe1cbbQE-unsplash.e49e71592615b67ac022.webp",
     "static/media/bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.webp": "/quiz/static/media/bodyImage-julien-tromeur-ZMK0DU5wARA-unsplash.fe7031a5ce788fecc170.webp",
     "static/media/solarSystemImagenasa-hubble-space-telescope-rZhFmSl1Jow-unsplash.webp": "/quiz/static/media/solarSystemImagenasa-hubble-space-telescope-rZhFmSl1Jow-unsplash.6776b3f6eeca37145f7d.webp",
     "static/media/volcanoImage-alain-bonnardeaux-tLxGw_ITs7k-unsplash.webp": "/quiz/static/media/volcanoImage-alain-bonnardeaux-tLxGw_ITs7k-unsplash.7adbf163ddcee930958c.webp",
@@ -12,12 +13,12 @@
     "static/media/weatherImage-noaa-ZVhm6rEKEX8-unsplash.webp": "/quiz/static/media/weatherImage-noaa-ZVhm6rEKEX8-unsplash.844281a80aaf9e7982ff.webp",
     "static/media/text-document-remove-icon.webp": "/quiz/static/media/text-document-remove-icon.95ee914d69bef00997c9.webp",
     "index.html": "/quiz/index.html",
-    "main.1a0ffabc.css.map": "/quiz/static/css/main.1a0ffabc.css.map",
-    "main.bd56bbe9.js.map": "/quiz/static/js/main.bd56bbe9.js.map",
+    "main.cd40145a.css.map": "/quiz/static/css/main.cd40145a.css.map",
+    "main.4f185eae.js.map": "/quiz/static/js/main.4f185eae.js.map",
     "453.57c2c991.chunk.js.map": "/quiz/static/js/453.57c2c991.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1a0ffabc.css",
-    "static/js/main.bd56bbe9.js"
+    "static/css/main.cd40145a.css",
+    "static/js/main.4f185eae.js"
   ]
 }

@@ -142,7 +142,7 @@ export const quizSlice = createSlice({
                     p7: { id: 'p7', type: 'trueFalse', question: 'Antarctica gets so cold in winter that even the sea freezes.', options: { a: 'true', b: 'false' }, correctAnswer: 'a' },
                     p8: { id: 'p8', type: 'multipleChoice', question: 'Where can most sea creates be found', options: { a: 'In the deepest darkest places of the ocean', b: 'roughly in the middle depth of the ocean', c: 'near the surface where it is light and warm', d: 'in rock pools ' }, correctAnswer: 'c' },
                     p9: { id: 'p9', type: 'fillBlank', blankCount: 2, question: {questionPart1: 'In caves you can find',questionPart2: 'stalagmites, and', questionPart3: 'stalactites.'}, options: { a: 'standing', b: 'hanging' }, correctAnswer: ['a', 'b'] },
-                    p10:{ id: 'p10', type: 'multipleChoice', question: 'What do you find on top of the highest mountains', options: { a: 'a stream', b: 'clouds', c: 'snow', d: 'sand' }, correctAnswer: ['c'] }
+                    p10:{ id: 'p10', type: 'multipleChoice', question: 'What do you find on top of the highest mountains', options: { a: 'a stream', b: 'clouds', c: 'snow', d: 'sand' }, correctAnswer: 'c' }
                 }
             }
 

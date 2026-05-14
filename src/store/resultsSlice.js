@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const resultsSlice = createSlice({
     name: 'results', //in the store this slice will be registered as "state.results"
-    initialState: {
+    initialState: {/*
         answersByQuiz: {
             volcanoes: {},
             weather: {},
@@ -12,24 +12,45 @@ export const resultsSlice = createSlice({
             stormsAndHurricanes: {},
             planetEarth: {}
         }
-        /*
+        */
+
         answersByQuiz: {
             volcanoes: {
-                v1: 'a', v2: 'b', v3: ['a', 'c'], v4: 'c', v5: 'a',
+                v1: 'b', v2: 'a', v3: ['a', 'c'], v4: 'c', v5: 'a',
                 v6: 'c', v7: ['e', 'b'], v8: 'a', v9: 'a', v10: 'c'
             },
+
             weather: {
-                w1: 'a', w2: 'a', w3: ['b', 'a'], w4: 'b', w5: 'a',
+                w1: 'b', w2: 'a', w3: ['a', 'b'], w4: 'b', w5: 'a',
                 w6: 'c', w7: ['b'], w8: 'b', w9: 'a', w10: 'c'
             },
+
             solarSystem: {
-                s1: 'c', s2: 'b', s3: ['year', 'Sun'], s4: 'b', s5: 'b',
+                s1: 'c', s2: 'a', s3: ['b', 'c'], s4: 'b', s5: 'b',
                 s6: 'a', s7: ['b'], s8: 'c', s9: 'a', s10: 'b'
             },
+
             body: {
-                b1: 'b', b2: 'b', b3: ['lungs', 'air'], b4: 'b', b5: 'a',
+                b1: 'b', b2: 'a', b3: ['a', 'c'], b4: 'b', b5: 'a',
                 b6: 'b', b7: ['b'], b8: 'c', b9: 'a', b10: 'b'
-        }*/
+            },
+
+            earthquakes: {
+                e1: 'a', e2: 'b', e3: 'a', e4: 'b', e5: ['b', 'a'],
+                e6: 'b', e7: 'a', e8: 'b', e9: 'c', e10: ['a', 'b']
+            },
+
+            stormsAndHurricanes: {
+                s1: 'a', s2: 'a', s3: 'b', s4: 'b', s5: 'b',
+                s6: 'a', s7: ['a', 'b'], s8: 'b', s9: 'b', s10: 'b'
+            },
+
+            planetEarth: {
+                p1: ['b', 'a'], p2: 'b', p3: 'd', p4: ['c', 'b'], p5: 'b',
+                p6: 'c', p7: 'a', p8: 'c', p9: ['a', 'b'], p10: 'c'
+            }
+        }
+    
     },
 
     reducers: {
@@ -65,7 +86,7 @@ const calculateScore = (quizData, userAnswers) => {
 
         if (userAnswer === undefined || userAnswer === null) return;
 
-        // Helper to turn any answer (key or word) into its final word value
+        //turn any answer (key or word) into its final word value
         const getWord = (val) => {
             if (Array.isArray(val)) {
                 return val.map(item => (question.options && question.options[item]) ? question.options[item] : item);

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const resultsSlice = createSlice({
     name: 'results', //in the store this slice will be registered as "state.results"
-    initialState: {/*
+    initialState: {
         answersByQuiz: {
             volcanoes: {},
             weather: {},
@@ -12,8 +12,8 @@ export const resultsSlice = createSlice({
             stormsAndHurricanes: {},
             planetEarth: {}
         }
-        */
-
+        
+        /*
         answersByQuiz: {
             volcanoes: {
                 v1: 'b', v2: 'a', v3: ['a', 'c'], v4: 'c', v5: 'a',
@@ -50,7 +50,7 @@ export const resultsSlice = createSlice({
                 p6: 'c', p7: 'a', p8: 'c', p9: ['a', 'b'], p10: 'c'
             }
         }
-    
+        */
     },
 
     reducers: {

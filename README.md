@@ -175,8 +175,7 @@ To add another quiz follow these steps:
 2. In resultsSlice.js add an empty array in the initialState for the quiz.
 3. Find an immage that is free to use and save it in the "images" directory (compress if required to .webp using https://squoosh.app/).
 4. Refference the immage in refferences on the README page.
-5. In homePage.js import the immage and add it to the "quizImageMap" object (ensure the key is the same name as the key in the image object in the quizSlice.js).
-6. in questionsPage.js import the image and add it to the "quizImageMap" object (agian use the same key).
+5. In QuizImageMap.js import the immage and add it to the "quizImageMap" object (ensure the key is the same name as the key in the image object in the quizSlice.js).
 
 
 

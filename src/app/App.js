@@ -2,9 +2,9 @@ import HomePage from "../features/HomePage"
 import QuestionsPage from "../features/QuestionsPage";
 import HelpPage from "../features/HelpPage";
 import ResultsPage from "../features/ResultsPage";
-import homeIcon from "../images/homepage-icon.png";
-import resultsIcon from "../images/diagnostic-icon.png"
-import questionIcon from "../images/question-inquiry-icon.png"
+import homeIcon from "../lib/images/homepage-icon.png";
+import resultsIcon from "../lib/images/diagnostic-icon.png"
+import questionIcon from "../lib/images/question-inquiry-icon.png"
 import { 
   Route, 
   RouterProvider, 

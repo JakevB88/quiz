@@ -1,7 +1,7 @@
 
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import resetResultsIcon from "../images/text-document-remove-icon.webp"
+import resetResultsIcon from "../lib/images/text-document-remove-icon.webp"
 import {  
     selectQuiz, 
     selectActiveQuizId
